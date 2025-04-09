@@ -10,16 +10,18 @@ or bug reports to improve it are **very welcome**!
 
 ## How to use
 
-Copy `uvt-poster.cls`, `template.tex`, and the relevant logos from `assets/`
+Copy `beamer*.sty`, `template.tex`, and the relevant logos from `assets/`
 to your working directory. Modify `template.tex` as appropriate and build with
 `PDFLaTeX` (or `XeLaTeX` or `LuaLaTeX` for the adventurous).
 
-The package defines the following options used as `\usepacakge[opts]{uvt-poster}`.
+The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 
 | Option                            | Description                           |
 | :-                                | :-                                    |
 | `nomyriadpro`                     | Do not load the *Myriad Pro* fonts (default loads if available) |
-| `department=<value>`              | Use predefined department info (header and footer) |
+| `size=aN`                         | Set the paper size                    |
+| `orientation=name`                | Set the orientation to "landscape" or "portrait" |
+| Other                             | Other options are passed to `beamerposter` |
 
 The standard branding colors are given below.
 
@@ -46,6 +48,17 @@ If you are using `XeLaTeX` or `LuaLaTeX`, there are many other nice fonts to
 keep in mind that would work well. For example: Carlito (a Calibri clone),
 Caladea (a Cambria clone), Montserrat (inspired by Gotham), Adobe Source Sans,
 and many others. A nice font will always make your poster look nicer!
+
+## What it looks like
+
+[Full PDF](template.pdf)
+![template](images/template.png "template")
+
+## Acknowledgement
+
+This theme is based on the [Gemini](https://github.com/anishathalye/gemini/)
+theme, but mainly keeps the header and footer from it. If you need a more general
+theme, Gemini is quite wonderful!
 
 ## License
 
