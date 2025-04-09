@@ -12,7 +12,7 @@ pdf basename:
     @cp {{ TEXOUTDIR }}/{{ basename }}.pdf .
 
 [doc("Build template example")]
-template:
+build:
     @just pdf template
 
 [doc("Update license text")]

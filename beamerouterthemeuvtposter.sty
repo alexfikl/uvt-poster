@@ -43,7 +43,7 @@
 % Headline
 
 \newlength{\maxlogowidth}
-\setlength{\maxlogowidth}{0.5\paperwidth}
+\setlength{\maxlogowidth}{1.25\paperwidth}
 
 \setbeamertemplate{headline}{
     \begin{beamercolorbox}{headline}
@@ -51,18 +51,34 @@
     \begin{column}{\maxlogowidth}
         \vskip5ex
         \vfill
-        \hspace{10ex}
-        \raggedright
-        \includegraphics[width=0.2\paperwidth]{\uvtposter@outer@headerlogo}
+        \hspace*{1in}
+        \includegraphics[width=0.15\paperwidth]{\uvtposter@outer@headerlogo}
         \vfill
     \end{column}
     \begin{column}{\dimexpr\paperwidth-\maxlogowidth-\maxlogowidth}
         \usebeamerfont{headline}
         \vskip 3ex
         \centering
-        {\usebeamerfont{headline title}{\usebeamercolor[fg]{headline title}\inserttitle} \\[0.5ex]}
-        {\usebeamerfont{headline author}\usebeamercolor[fg]{headline author}\insertauthor\\[1ex]}
-        {\usebeamerfont{headline institute}\usebeamercolor[fg]{headline institute}\insertinstitute\\[1ex]}
+        {
+            \usebeamerfont{headline title}
+            \usebeamercolor[fg]{headline title}
+            \inserttitle
+        }
+        \vspace{1em}
+
+        {
+            \usebeamerfont{headline author}
+            \usebeamercolor[fg]{headline author}
+            \insertauthor
+        }
+        \vspace{1em}
+
+        {
+            \usebeamerfont{headline institute}
+            \usebeamercolor[fg]{headline institute}
+            \insertinstitute
+        }
+        \vspace{1em}
     \end{column}
     \begin{column}{\maxlogowidth}
         \centering

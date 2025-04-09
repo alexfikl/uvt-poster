@@ -60,7 +60,12 @@
 \RequirePackage{xparse}
 
 \ifuvtposter@layoutgrid
-    \RequirePackage{showframe}
+    \RequirePackage[
+        grid,
+        gridunit=cm,
+        gridcolor=gray!70,
+        subgridcolor=gray!70,
+        texcoord]{eso-pic}
 \fi
 
 % remove navigation symbols

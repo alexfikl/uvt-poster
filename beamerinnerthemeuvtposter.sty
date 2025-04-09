@@ -60,23 +60,26 @@
 % <<< blocks
 
 \setbeamertemplate{block begin}{
-    \vspace{\fill}
-    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
-        \begin{tabular}{!{\color{UVTDarkBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-    	    \begin{beamercolorbox}{block title}
-                \usebeamerfont*{block title}
-                \vbox{}\vskip 0.2ex
-                \insertblocktitle
-            \end{beamercolorbox}
-            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
-            \usebeamerfont*{block text}
+    \begin{adjustbox}{max width=0.98\textwidth}
+    \begin{tabular}{!{\color{UVTDarkBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+        \centering
+        \begin{minipage}{0.96\linewidth}
+        \begin{beamercolorbox}{block title}
+            \usebeamerfont*{block title}
+            \vbox{}\vskip 0.2ex
+            \insertblocktitle
+        \end{beamercolorbox}
+        \vspace{2em}
+        \usebeamerfont*{block text}
 }
-\setbeamertemplate{block end}{\vspace{2ex}\end{tabular}\end{adjustbox}\vspace*{3ex}}
+\setbeamertemplate{block end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{3ex}}
 
 \setbeamertemplate{block alerted begin}{
     \vspace{\fill}
-    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+    \begin{adjustbox}{max width=0.98\textwidth}
         \begin{tabular}{!{\color{UVTYellow}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+        \centering
+        \begin{minipage}{0.96\linewidth}
     	    \begin{beamercolorbox}{alerted text}
                 \usebeamerfont*{block title}
                 \vbox{}\vskip 0.2ex
@@ -85,12 +88,14 @@
             \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
             \usebeamerfont*{block text}
 }
-\setbeamertemplate{block alerted end}{\vspace{2ex}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+\setbeamertemplate{block alerted end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{2ex}}
 
 \setbeamertemplate{block example begin}{
     \vspace{\fill}
-    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+    \begin{adjustbox}{max width=0.98\textwidth}
         \begin{tabular}{!{\color{UVTLightBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+        \centering
+        \begin{minipage}{0.96\linewidth}
     	    \begin{beamercolorbox}{example text}
                 \usebeamerfont*{block title}
                 \vbox{}\vskip 0.2ex
@@ -99,7 +104,7 @@
             \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
             \usebeamerfont*{block text}
 }
-\setbeamertemplate{block example end}{\vspace{2ex}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+\setbeamertemplate{block example end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{2ex}}
 
 % >>>
 

@@ -2,185 +2,215 @@
 
 % <<< packages
 
-\usetheme[size=a1,orientation=portrait]{uvtposter}
+\usetheme[size=a1,orientation=landscape]{uvtposter}
+
+\usepackage{amsmath}
 
 \usepackage{hyperref}
 \usepackage{booktabs}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.14}
 
-\usepackage[pangram]{blindtext}
+\usepackage{listings}
+
+% >>>
+
+% <<< commands
+
+\NewDocumentCommand \dx { O{x} } {\,\mathrm{d} #1}
 
 % >>>
 
 % <<< metadata
 
-\title{Some fancy title: Followed by some more text}
-\author{Alyssa P. Hacker \inst{1} \and Ben Bitdiddle \inst{2} \and Lem E. Tweakit \inst{2}}
-\institute[shortinst]{\inst{1} Some Institute \quad \inst{2} Another Institute}
+\title{West University of Timișoara: \\ A simple and modern Conference Poster Template}
+\author{Hubert J. Farnsworth\inst{1} \and Amy Wong-Kroker\inst{2}}
+\institute[shortinst]{\inst{1} West University of Timișoara \quad \inst{2} Mars University}
 
 \footercontent{
-  \href{https://www.example.com}{https://www.example.com} \hfill
-  ABC Conference 2025, New York --- XYZ-1234 \hfill
-  \href{mailto:alyssa.p.hacker@example.com}{alyssa.p.hacker@example.com}}
+    \href{https://info.uvt.ro/}{https://info.uvt.ro/} \hfill
+    27th SYNASC 2025, Timișoara --- September 22--25 \hfill
+    \href{mailto:info@e-uvt.ro}{info@e-uvt.ro}}
 
 % >>>
 
 \begin{document}
 
-\begin{frame}[t]
+\begin{frame}[fragile]
 \begin{columns}[t]
 
 \separatorcolumn
 \begin{column}{0.3\paperwidth}
 
-\begin{block}{A block title}
-Some block contents, followed by a diagram, followed by a dummy paragraph.
+\begin{block}{Introduction}
+    The \textbf{UVT Conference Poster Theme} is a modern theme based on
+    \texttt{beamerposter} that uses the official
+    \textcolor{UVTLightBlue}{UVT branding}\footnotemark[1]. Some
+    of its elements and styling are inspired by \textcolor{UVTLightBlue}{Gemini}
+    theme\footnotemark[2].
 
-\begin{figure}
-\centering
-\begin{tikzpicture}[scale=6]
-    \draw[step=0.25cm,color=gray] (-1,-1) grid (1,1);
-    \draw (1,0) -- (0.2,0.2) -- (0,1) -- (-0.2,0.2) -- (-1,0)
-        -- (-0.2,-0.2) -- (0,-1) -- (0.2,-0.2) -- cycle;
-\end{tikzpicture}
-\caption{A figure caption.}
-\end{figure}
+    \bigskip
+    It comes with a few nifty features:
+    \begin{itemize}
+        \item Use of the official color scheme for UVT throughout.
+        \item Customized block environments.
+        \item Easy to extend and modify separate parts (header, fonts, etc).
+    \end{itemize}
 
-\Blindtext[1][1]
+    \bigskip
+    Separate parts are available as e.g. \texttt{\textbackslash usecolortheme\{uvtposter\}}!
+    \bigskip
+
+    To use it in you documents add something like the following
+
+    \begin{center}
+    \begin{lstlisting}[language=TeX]
+    \documentclass[final]{beamer}
+    % 1. The theme supports different sizes, e.g. a0, a1, ...
+    % 2. It can also be viewed in "landscape" or "portrait" mode
+    \usetheme[size=a1,orientation=landscape]{uvtposter}
+
+    % 3. You can select other color schemes or box types
+    \usecolortheme{uvtposter}
+    \end{lstlisting}
+    \end{center}
+
+    \bigskip
+    More information is available in \texttt{template.tex}.
+    \bigskip
+
+    \footnotetext[1]{\url{https://dci.uvt.ro/identitate-vizuala}}
+    \footnotetext[2]{\url{https://github.com/anishathalye/gemini/}}
 \end{block}
 
-  \begin{block}{A block containing a list}
+\begin{block}{Colors and Fonts}
+    This theme uses the \emph{Myriad Pro} font. This is a clean \emph{sans serif}
+    font from Adobe that is recommended by the official UVT branding.
 
-    Nam vulputate nunc felis, non condimentum lacus porta ultrices. Nullam sed
-    sagittis metus. Etiam consectetur gravida urna quis suscipit.
-
+    \bigskip
+    The theme has three standard colors:
     \begin{itemize}
-      \item \textbf{Mauris tempor} risus nulla, sed ornare
-      \item \textbf{Libero tincidunt} a duis congue vitae
-      \item \textbf{Dui ac pretium} morbi justo neque, ullamcorper
+        \item A nice \textcolor{UVTLightBlue}{\textbf{light blue}} (\texttt{UVTLightBlue}).
+        \item A bolder \textcolor{UVTDarkBlue}{\textbf{dark blue}} (\texttt{UVTDarkBlue}).
+        \item An attention grabbing \textcolor{UVTYellow}{\textbf{yellow}}
+        (\texttt{UVTYellow})!
+        \item Variants \texttt{color!x} can also be used to darken or lighten them
     \end{itemize}
 
-    Eget augue porta, bibendum venenatis tortor.
+    \bigskip
+    These can be used for emphasizing \textcolor{UVTLightBlue}{text} or for
+    more obvious \alert{alerts}. Standard \textbf{bold} and \textit{italic} emphasis
+    can of course also be used!
+\end{block}
 
-  \end{block}
+\begin{alertblock}{Lists, enumerations, and descriptions}
+\heading{Lists}
 
-  \begin{alertblock}{A highlighted block}
-
-    This block catches your eye, so \textbf{important stuff} should probably go
-    here.
-
-    Curabitur eu libero vehicula, cursus est fringilla, luctus est. Morbi
-    consectetur mauris quam, at finibus elit auctor ac. Aliquam erat volutpat.
-    Aenean at nisl ut ex ullamcorper eleifend et eu augue. Aenean quis velit
-    tristique odio convallis ultrices a ac odio.
-
+\begin{itemize}
+    \item Itemize lists are nicely customized ...
     \begin{itemize}
-      \item \textbf{Fusce dapibus tellus} vel tellus semper finibus. In
-        consequat, nibh sed mattis luctus, augue diam fermentum lectus.
-      \item \textbf{In euismod erat metus} non ex. Vestibulum luctus augue in
-        mi condimentum, at sollicitudin lorem viverra.
-      \item \textbf{Suspendisse vulputate} mauris vel placerat consectetur.
-        Mauris semper, purus ac hendrerit molestie, elit mi dignissim odio, in
-        suscipit felis sapien vel ex.
+        \item All the way down ...
+        \begin{itemize}
+            \item To the third level!
+        \end{itemize}
     \end{itemize}
+\end{itemize}
 
-    Aenean tincidunt risus eros, at gravida lorem sagittis vel. Vestibulum ante
-    ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae.
+\heading{Enumerate}
 
-  \end{alertblock}
+\begin{enumerate}
+    \item We can also enumerate!
+    \item Many things!
+    \item It's great!
+\end{enumerate}
 
+\heading{Description}
+
+\begin{description}
+    \item[UVT] And describe our university in exquisite detail, so that we
+        can capture all its multiline greatness!
+\end{description}
+\end{alertblock}
 \end{column}
 
 \separatorcolumn
 
 \begin{column}{0.3\paperwidth}
+\begin{block}{Blocks}
 
-  \begin{block}{A block containing an enumerated list}
+    We have various standard Beamer blocks styled in a pleasing fashion. You
+    might have noticed their use for each of the "sections" up to now.
 
-    Vivamus congue volutpat elit non semper. Praesent molestie nec erat ac
-    interdum. In quis suscipit erat. \textbf{Phasellus mauris felis, molestie
-    ac pharetra quis}, tempus nec ante. Donec finibus ante vel purus mollis
-    fermentum. Sed felis mi, pharetra eget nibh a, feugiat eleifend dolor. Nam
-    mollis condimentum purus quis sodales. Nullam eu felis eu nulla eleifend
-    bibendum nec eu lorem. Vivamus felis velit, volutpat ut facilisis ac,
-    commodo in metus.
+    \bigskip
 
-    \begin{enumerate}
-      \item \textbf{Morbi mauris purus}, egestas at vehicula et, convallis
-        accumsan orci. Orci varius natoque penatibus et magnis dis parturient
-        montes, nascetur ridiculus mus.
-      \item \textbf{Cras vehicula blandit urna ut maximus}. Aliquam blandit nec
-        massa ac sollicitudin. Curabitur cursus, metus nec imperdiet bibendum,
-        velit lectus faucibus dolor, quis gravida metus mauris gravida turpis.
-      \item \textbf{Vestibulum et massa diam}. Phasellus fermentum augue non
-        nulla accumsan, non rhoncus lectus condimentum.
-    \end{enumerate}
+    \begin{block}{Block 1}
+        Some block block: \verb|\begin{block} ... \end{block}|.
+    \end{block}
 
-  \end{block}
+    \begin{alertblock}{Alert 1}
+        Some alert block: \verb|\begin{alertedblock} ... \end{alertblock}|.
+    \end{alertblock}
 
-  \begin{block}{Fusce aliquam magna velit}
+    \begin{exampleblock}{Example 1}
+        Some example block: \verb|\begin{exampleblock} ... \end{exampleblock}|.
+    \end{exampleblock}
 
-    Et rutrum ex euismod vel. Pellentesque ultricies, velit in fermentum
-    vestibulum, lectus nisi pretium nibh, sit amet aliquam lectus augue vel
-    velit. Suspendisse rhoncus massa porttitor augue feugiat molestie. Sed
-    molestie ut orci nec malesuada. Sed ultricies feugiat est fringilla
-    posuere.
+    \bigskip
+
+    You probably should not nest these as we just did here!
+\end{block}
+
+\begin{block}{Figures}
+    You can also add figures to each block.
+    \bigskip
 
     \begin{figure}
-      \centering
-      \begin{tikzpicture}
-        \begin{axis}[
-            scale only axis,
-            no markers,
-            domain=0:2*pi,
-            samples=100,
-            axis lines=center,
-            axis line style={-},
-            ticks=none]
-          \addplot[red] {sin(deg(x))};
-          \addplot[blue] {cos(deg(x))};
-        \end{axis}
-      \end{tikzpicture}
-      \caption{Another figure caption.}
+    \begin{tikzpicture}[scale=2.8]
+        % Draw axes
+        \draw [<->,thick] (0,2) node (yaxis) [above] {$y$}
+            |- (3,0) node (xaxis) [right] {$x$};
+        % Draw two intersecting lines
+        \draw (0,0) coordinate (a_1) -- (2,1.8) coordinate (a_2);
+        \draw (0,1.5) coordinate (b_1) -- (2.5,0) coordinate (b_2);
+        % Calculate the intersection of the lines a_1 -- a_2 and b_1 -- b_2
+        % and store the coordinate in c.
+        \coordinate (c) at (intersection of a_1--a_2 and b_1--b_2);
+        % Draw lines indicating intersection with y and x axis. Here we use
+        % the perpendicular coordinate system
+        \draw[dashed] (yaxis |- c) node[left] {$y'$}
+            -| (xaxis -| c) node[below] {$x'$};
+        % Draw a dot to indicate intersection point
+        \fill[UVTYellow] (c) circle (2pt);
+    \end{tikzpicture}
+    \caption{A simple figure.}
     \end{figure}
 
-  \end{block}
+    \bigskip
 
-  \begin{block}{Nam cursus consequat egestas}
+    These should be used quite extensively to better make your point. This is
+    a visual sort of medium after all!
+\end{block}
 
-    Nulla eget sem quam. Ut aliquam volutpat nisi vestibulum convallis. Nunc a
-    lectus et eros facilisis hendrerit eu non urna. Interdum et malesuada fames
-    ac ante \textit{ipsum primis} in faucibus. Etiam sit amet velit eget sem
-    euismod tristique. Praesent enim erat, porta vel mattis sed, pharetra sed
-    ipsum. Morbi commodo condimentum massa, \textit{tempus venenatis} massa
-    hendrerit quis. Maecenas sed porta est. Praesent mollis interdum lectus,
-    sit amet sollicitudin risus tincidunt non.
+\begin{block}{Tables}
+    \begin{table}
+    \centering
+    \caption{Largest cities in the world (source: UN 2018 population estimates
+    from Wikipedia)}
+    \begin{tabular}{@{} lr @{}}
+        \toprule
+        City & Population\\
+        \midrule
+        Tokyo & 37,468,000 \\
+        Delhi & 28,514,000 \\
+        Shanghai & 25,582,000 \\
+        São Paolo & 21,650,000 \\
+        \bottomrule
+    \end{tabular}
+    \end{table}
 
-    Etiam sit amet tempus lorem, aliquet condimentum velit. Donec et nibh
-    consequat, sagittis ex eget, dictum orci. Etiam quis semper ante. Ut eu
-    mauris purus. Proin nec consectetur ligula. Mauris pretium molestie
-    ullamcorper. Integer nisi neque, aliquet et odio non, sagittis porta justo.
+    \bigskip
 
-    \begin{itemize}
-      \item \textbf{Sed consequat} id ante vel efficitur. Praesent congue massa
-        sed est scelerisque, elementum mollis augue iaculis.
-        \begin{itemize}
-          \item In sed est finibus, vulputate
-            nunc gravida, pulvinar lorem. In maximus nunc dolor, sed auctor eros
-            porttitor quis.
-          \item Fusce ornare dignissim nisi. Nam sit amet risus vel lacus
-            tempor tincidunt eu a arcu.
-          \item Donec rhoncus vestibulum erat, quis aliquam leo
-            gravida egestas.
-        \end{itemize}
-      \item \textbf{Sed luctus, elit sit amet} dictum maximus, diam dolor
-        faucibus purus, sed lobortis justo erat id turpis.
-      \item \textbf{Pellentesque facilisis dolor in leo} bibendum congue.
-        Maecenas congue finibus justo, vitae eleifend urna facilisis at.
-    \end{itemize}
-
-  \end{block}
+    Tables are also a good way to display data. Using the \texttt{booktabs}
+    package should make your tables look very nice indeed!
+\end{block}
 
 \end{column}
 
@@ -188,78 +218,79 @@ Some block contents, followed by a diagram, followed by a dummy paragraph.
 
 \begin{column}{0.3\paperwidth}
 
-  \begin{exampleblock}{A highlighted block containing some math}
+\begin{exampleblock}{Example: Infinite Primes}
+    Imagine that there were only a limited number of prime numbers, and we could
+    list them as \(p_1, p_2, \ldots, p_n\). Now, consider the number formed by
+    multiplying all these primes together and then adding one, that is,
+    \[
+    N = p_1 \times p_2 \times \cdots \times p_n + 1.
+    \]
 
-    A different kind of highlighted block.
+    \bigskip
 
-    $$
-    \int_{-\infty}^{\infty} e^{-x^2}\,dx = \sqrt{\pi}
-    $$
+    If you try to divide this new number \(N\) by any of the primes on your list,
+    you always get a remainder of 1. This means that none of the primes
+    \(p_1, p_2, \ldots, p_n\) can be a divisor of \(N\). Since every number
+    greater than 1 must have a prime factor, \(N\) must either be a prime
+    itself or be divisible by a prime that was not in our original list.
 
-    Interdum et malesuada fames $\{1, 4, 9, \ldots\}$ ac ante ipsum primis in
-    faucibus. Cras eleifend dolor eu nulla suscipit suscipit. Sed lobortis non
-    felis id vulputate.
+    \bigskip
 
-    \heading{A heading inside a block}
+    This simple observation shows that no matter how many primes you start with,
+    you can always construct a number that reveals at least one additional prime,
+    proving that there are infinitely many prime numbers.
+\end{exampleblock}
 
-    Praesent consectetur mi $x^2 + y^2$ metus, nec vestibulum justo viverra
-    nec. Proin eget nulla pretium, egestas magna aliquam, mollis neque. Vivamus
-    dictum $\mathbf{u}^\intercal\mathbf{v}$ sagittis odio, vel porta erat
-    congue sed. Maecenas ut dolor quis arcu auctor porttitor.
+\begin{exampleblock}{Example: Grönwall Inequality}
+    Suppose you have a nonnegative function \(u(t)\) that satisfies an inequality
+    of the form
+    \[
+        u(t) \le a + \int_{t_0}^t b(s)\, u(s) \dx[s],
+    \]
+    where \(a \ge 0\) is a constant and \(b(t) \ge 0\) is a given function. The
+    idea behind the inequality is that even though \(u(t)\) might depend on its
+    past values through the integral, its growth is controlled by the accumulation
+    of the function \(b(t)\).
 
-    \heading{Another heading inside a block}
+    \bigskip
+    To see how this control works, define an auxiliary function
+    \[
+        v(t) = a + \int_{t_0}^t b(s)\, u(s) \dx[s].
+    \]
 
-    Sed augue erat, scelerisque a purus ultricies, placerat porttitor neque.
-    Donec $P(y \mid x)$ fermentum consectetur $\nabla_x P(y \mid x)$ sapien
-    sagittis egestas. Duis eget leo euismod nunc viverra imperdiet nec id
-    justo.
+    Since \(u(t) \le v(t)\), differentiate \(v(t)\) with respect to \(t\) to obtain
+    \[
+        v'(t) = b(t)\, u(t) \le b(t)\, v(t).
+    \]
 
-  \end{exampleblock}
+    Dividing both sides by \(v(t)\) (which is positive) gives
+    \[
+        \frac{v'(t)}{v(t)} \le b(t).
+    \]
 
-  \begin{block}{Nullam vel erat at velit convallis laoreet}
+    Integrating this inequality from \(t_0\) to \(t\) and exponentiating yields
+    \[
+        v(t) \le v(t_0) \exp\!\left(\int_{t_0}^t b(s)\, \dx[s]\right).
+    \]
 
-    Class aptent taciti sociosqu ad litora torquent per conubia nostra, per
-    inceptos himenaeos. Phasellus libero enim, gravida sed erat sit amet,
-    scelerisque congue diam. Fusce dapibus dui ut augue pulvinar iaculis.
+    Since \(v(t_0)=a\) and \(u(t) \le v(t)\), we conclude that
+    \[
+        u(t) \le a\, \exp\!\left(\int_{t_0}^t b(s)\, \dx[s]\right).
+    \]
 
-    \begin{table}
-      \centering
-      \begin{tabular}{l r r c}
-        \toprule
-        \textbf{First column} & \textbf{Second column} & \textbf{Third column} & \textbf{Fourth} \\
-        \midrule
-        Foo & 13.37 & 384,394 & $\alpha$ \\
-        Bar & 2.17 & 1,392 & $\beta$ \\
-        Baz & 3.14 & 83,742 & $\delta$ \\
-        Qux & 7.59 & 974 & $\gamma$ \\
-        \bottomrule
-      \end{tabular}
-      \caption{A table caption.}
-    \end{table}
+    \bigskip
 
-    Donec quis posuere ligula. Nunc feugiat elit a mi malesuada consequat. Sed
-    imperdiet augue ac nibh aliquet tristique. Aenean eu tortor vulputate,
-    eleifend lorem in, dictum urna. Proin auctor ante in augue tincidunt
-    tempor. Proin pellentesque vulputate odio, ac gravida nulla posuere
-    efficitur. Aenean at velit vel dolor blandit molestie. Mauris laoreet
-    commodo quam, non luctus nibh ullamcorper in. Class aptent taciti sociosqu
-    ad litora torquent per conubia nostra, per inceptos himenaeos.
+    This simple argument shows that if the function \(u(t)\) satisfies the original
+    integral inequality, then its value at any time \(t\) is bounded above by an
+    exponential function determined by the integral of \(b(t)\); this is precisely
+    the statement of the integral Grönwall inequality.
+\end{exampleblock}
 
-    Nulla varius finibus volutpat. Mauris molestie lorem tincidunt, iaculis
-    libero at, gravida ante. Phasellus at felis eu neque suscipit suscipit.
-    Integer ullamcorper, dui nec pretium ornare, urna dolor consequat libero,
-    in feugiat elit lorem euismod lacus. Pellentesque sit amet dolor mollis,
-    auctor urna non, tempus sem.
-
-  \end{block}
-
-  \begin{block}{References}
-
+\begin{block}{References}
     \nocite{*}
     \bibliographystyle{plain}
     \bibliography{template}
-
-  \end{block}
+\end{block}
 
 \end{column}
 \separatorcolumn
