@@ -1,0 +1,80 @@
+% SPDX-FileCopyrightText: 2025 Alexandru Fikl <alexfikl@gmail.com>
+% SPDX-License-Identifier: CC-BY-4.0
+%
+% Usage:
+%   \usetheme[options]{uvtposter}
+%
+% References:
+%   Colors and Logos: https://dci.uvt.ro/identitate-vizuala
+%
+% Acknowledgement:
+%   The skeleton of this style file was copied from
+%   https://github.com/anishathalye/gemini
+%   though little of it remains.
+
+\def\fileversion{v0.1}
+\def\filedate{2025/04/10}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerthemeuvtposter}[\filedate \fileversion UVT Poster Theme]
+
+% <<< options
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+    family=uvtposter,
+    prefix=uvtposter@
+}
+
+% enable Myriad Pro
+\DeclareBoolOption[false]{nomyriadpro}
+% select language for logos
+\DeclareStringOption[english]{language}
+% show a debug layout grid
+\DeclareBoolOption[false]{layoutgrid}
+
+\ProcessOptionsBeamer
+\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{beamerposter}}
+\ProcessKeyvalOptions*
+
+\usecolortheme{uvtposter}
+\useinnertheme[
+    language=\uvtposter@language
+    ]{uvtposter}
+\useoutertheme[
+    language=\uvtposter@language,
+    ]{uvtposter}
+\usefonttheme[
+    \ifuvtposter@nomyriadpro nomyriadpro,\else\fi
+    ]{uvtposter}
+
+% >>>
+
+% <<< packages
+
+% fancy graphics
+\RequirePackage{beamerposter}
+\RequirePackage{tikz}
+
+% nicer command definitions
+\RequirePackage{xparse}
+
+\ifuvtposter@layoutgrid
+    \RequirePackage{showframe}
+\fi
+
+% remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% >>>
+
+% <<< commands
+
+\ProvideDocumentCommand \footercontent { m } {\def\uvtposter@footercontent{#1}}
+\ProvideDocumentCommand \separatorcolumn {} {\begin{column}{0.025\paperwidth}\end{column}}
+\ProvideDocumentCommand \heading { m } {%
+    \par\bigskip%
+    {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}%
+    \par\smallskip}
+
+% >>>

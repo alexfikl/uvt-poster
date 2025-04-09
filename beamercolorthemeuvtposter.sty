@@ -1,0 +1,54 @@
+% SPDX-FileCopyrightText: 2025 Alexandru Fikl <alexfikl@gmail.com>
+% SPDX-License-Identifier: CC-BY-4.0
+
+\def\fileversion{v0.1}
+\def\filedate{2025/04/10}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamercolorthemeuvtposter}[\filedate \fileversion UVT Poster Color Theme]
+
+% <<< colors
+
+% NOTE: https://dci.uvt.ro/identitate-vizuala
+\definecolor{UVTLightBlue}{RGB}{52, 113, 183}
+\definecolor{UVTDarkBlue}{RGB}{3, 75, 119}
+\definecolor{UVTYellow}{RGB}{228, 172, 36}
+
+% NOTE: taken from the document itself
+\definecolor{UVTBeamerBlue}{RGB}{195, 232, 251}
+\definecolor{UVTBeamerGray}{RGB}{246, 246, 246}
+\definecolor{UVTBeamerDarkGray}{RGB}{182, 182, 182}
+
+% >>>
+
+% <<< styles
+
+\setbeamercolor{title}{fg=white, bg= , parent=normal text}
+\setbeamercolor{titlelike}{fg= , bg= , parent=normal text}
+\setbeamercolor{author}{use=normal text, bg= , parent=normal text}
+\setbeamercolor{date}{use=normal text, bg= , parent=normal text}
+\setbeamercolor{institute}{use=normal text, parent=normal text}
+
+\setbeamercolor{section title}{fg=white, use=title}
+\setbeamercolor{frametitle}{fg=UVTDarkBlue, use=titlelike}
+
+\setbeamercolor{headline}{fg=white,bg=UVTDarkBlue}
+\setbeamercolor{headline rule}{bg=UVTDarkBlue}
+
+\setbeamercolor{footline hline}{bg=UVTBeamerGray}
+\setbeamercolor{header hline}{bg=UVTBeamerGray}
+
+\setbeamercolor{url text}{fg=UVTDarkBlue}
+
+\setbeamercolor{block title}{fg=UVTDarkBlue}
+\setbeamercolor{alerted text}{fg=UVTYellow}
+\setbeamercolor{example text}{fg=UVTLightBlue}
+
+\setbeamercolor{enumerate item}{fg=UVTYellow, parent=normal text}
+\setbeamercolor{description item}{fg=UVTYellow, parent=normal text}
+
+\setbeamercolor{caption}{fg=UVTBeamerGray!50!black, parent=normal text}
+
+% >>>
+
+%% vim: foldmarker=<<<,>>>:foldmethod=marker:nospell:filetype=tex

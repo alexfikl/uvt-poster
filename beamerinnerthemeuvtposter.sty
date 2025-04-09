@@ -1,0 +1,123 @@
+% SPDX-FileCopyrightText: 2025 Alexandru Fikl <alexfikl@gmail.com>
+% SPDX-License-Identifier: CC-BY-4.0
+
+\def\fileversion{v0.1}
+\def\filedate{2025/04/10}
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{beamerinnerthemeuvtposter}[\filedate \fileversion UVT Poster Inner Theme]
+
+% <<< options
+
+\RequirePackage{ifthen}
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{
+    family=uvtposter,
+    prefix=uvtposter@inner@
+}
+
+% select language for logos
+\DeclareStringOption[english]{language}
+
+\ProcessOptionsBeamer
+\DeclareDefaultOption{\PackageWarning{beamerinnerthemeposter}{Unknown option `\CurrentOption`}}
+\ProcessKeyvalOptions*
+
+\RequirePackage{adjustbox}
+\RequirePackage{colortbl}
+\RequirePackage{tikz}
+
+% >>>
+
+% <<< itemize / enumerate
+
+\setbeamertemplate{itemize item}{
+    \tikz{
+        \draw[fill=UVTYellow, draw=none] (0, 0) rectangle (0.1, 0.1);
+        \draw[fill=UVTYellow, draw=none] (0.1, 0.1) rectangle (0.2, 0.2);
+        \draw[fill=UVTYellow, draw=none] (0, 0.2) rectangle (0.1, 0.3);
+    }
+}
+
+\setbeamertemplate{itemize subitem}{
+    \tikz{
+        \draw[fill=UVTDarkBlue, draw=none] (0, 0) rectangle (0.075, 0.075);
+        \draw[fill=UVTDarkBlue, draw=none] (0.075, 0.075) rectangle (0.15, 0.15);
+        \draw[fill=UVTDarkBlue, draw=none] (0, 0.15) rectangle (0.075, 0.225);
+    }
+}
+
+\setbeamertemplate{itemize subsubitem}{
+    \tikz{
+        \draw[fill=white, draw=none] (0, 0) rectangle (0.075, 0.075);
+        \draw[fill=UVTLightBlue, draw=none] (0.075, 0.075) rectangle (0.15, 0.15);
+        \draw[fill=white, draw=none] (0, 0.15) rectangle (0.075, 0.225);
+    }
+}
+
+% >>>
+
+% <<< blocks
+
+\setbeamertemplate{block begin}{
+    \vspace{\fill}
+    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+        \begin{tabular}{!{\color{UVTDarkBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+    	    \begin{beamercolorbox}{block title}
+                \usebeamerfont*{block title}
+                \vbox{}\vskip 0.2ex
+                \insertblocktitle
+            \end{beamercolorbox}
+            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
+            \usebeamerfont*{block text}
+}
+\setbeamertemplate{block end}{\vspace{2ex}\end{tabular}\end{adjustbox}\vspace*{3ex}}
+
+\setbeamertemplate{block alerted begin}{
+    \vspace{\fill}
+    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+        \begin{tabular}{!{\color{UVTYellow}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+    	    \begin{beamercolorbox}{alerted text}
+                \usebeamerfont*{block title}
+                \vbox{}\vskip 0.2ex
+                \insertblocktitle
+            \end{beamercolorbox}
+            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
+            \usebeamerfont*{block text}
+}
+\setbeamertemplate{block alerted end}{\vspace{2ex}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+
+\setbeamertemplate{block example begin}{
+    \vspace{\fill}
+    \begin{adjustbox}{max width=0.98\textwidth, trim=0 2ex 0 0,clip}
+        \begin{tabular}{!{\color{UVTLightBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
+    	    \begin{beamercolorbox}{example text}
+                \usebeamerfont*{block title}
+                \vbox{}\vskip 0.2ex
+                \insertblocktitle
+            \end{beamercolorbox}
+            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
+            \usebeamerfont*{block text}
+}
+\setbeamertemplate{block example end}{\vspace{2ex}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+
+% >>>
+
+% <<< figures
+
+% disable "Figure:" in the captions
+\setbeamertemplate{caption}{\scriptsize\insertcaption}
+\setbeamertemplate{caption label separator}{}
+
+% >>>
+
+% >>>
+
+\setbeamersize{
+    text margin left=.05\paperwidth,
+    text margin right=.05\paperwidth,
+    description width=0.075\paperwidth,
+    }
+\setlength{\labelsep}{\dimexpr\labelsep - 0.2em\relax}
+
+%% vim: foldmarker=<<<,>>>:foldmethod=marker:nospell:filetype=tex
