@@ -13,6 +13,13 @@
 
 % >>>
 
+% <<< formatting
+
+% use numbers for footnotes inside columns
+% \renewcommand\thempfootnote{\arabic{mpfootnote}}
+
+% >>>
+
 % <<< commands
 
 \NewDocumentCommand \dx { O{x} } {\,\mathrm{d} #1}
@@ -43,9 +50,9 @@
 \begin{block}{Introduction}
     The \textbf{UVT Conference Poster Theme} is a modern theme based on
     \texttt{beamerposter} that uses the official
-    \textcolor{UVTLightBlue}{UVT branding}\footnotemark[1]. Some
+    \textcolor{UVTLightBlue}{UVT branding}\footnote{\url{https://dci.uvt.ro/identitate-vizuala}}. Some
     of its elements and styling are inspired by \textcolor{UVTLightBlue}{Gemini}
-    theme\footnotemark[2].
+    theme\footnote{\url{https://github.com/anishathalye/gemini/}}.
 
     \bigskip
     It comes with a few nifty features:
@@ -76,9 +83,6 @@
     \bigskip
     More information is available in \texttt{template.tex}.
     \bigskip
-
-    \footnotetext[1]{\url{https://dci.uvt.ro/identitate-vizuala}}
-    \footnotetext[2]{\url{https://github.com/anishathalye/gemini/}}
 \end{block}
 
 \begin{block}{Colors and Fonts}
