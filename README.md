@@ -53,6 +53,8 @@ The following helper macros are defined for some standard functionality.
 | `\footercontent`                  | Text added to the footer (should be properly spaced) |
 | `\heading`                        | A macro that adds a small heading inside blocks |
 | `\separatorcolumn`                | Adds a standardized spacing between columns |
+| `\headerlogoleft`                 | Left-hand side logo in the header     |
+| `\headerlogoright`                | Right-hand side logo in the header    |
 
 ## Fonts
 

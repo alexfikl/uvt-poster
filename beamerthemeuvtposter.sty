@@ -89,15 +89,18 @@
 
 \ProvideDocumentCommand \separatorcolumn {} {\begin{column}{0.025\paperwidth}\end{column}}
 
+\NewDocumentCommand \headerlogoleft  { m } {\def\@headerlogoleft{#1}}
+\NewDocumentCommand \headerlogoright  { m } {\def\@headerlogoright{#1}}
+
 % >>>
 
 % <<< assets
 
 \ifthenelse{\equal{\uvtposter@language}{english}}{
-    \def\uvtposter@headerlogo{assets/uvt-logo-en.png}
+    \headerlogoleft{\includegraphics[width=0.23\paperwidth]{assets/uvt-logo-en.png}}
 }{
 \ifthenelse{\equal{\uvtposter@language}{romanian}}{
-    \def\uvtposter@headerlogo{assets/uvt-logo-ro.png}
+    \headerlogoleft{\includegraphics[width=0.23\paperwidth]{assets/uvt-logo-ro.png}}
 }{
     \PackageError{beamerthemeuvtposter}{Unknown language `\uvtposter@language`}{}
 }}
@@ -172,7 +175,7 @@
         \vskip5ex
         \vfill
         \hspace*{1in}
-        \includegraphics[width=0.23\paperwidth]{\uvtposter@headerlogo}
+        \raggedright \@headerlogoleft
         \vfill
     \end{column}
     \begin{column}{\dimexpr\paperwidth-\maxlogowidth-\maxlogowidth}
@@ -201,7 +204,13 @@
         \vspace{1em}
     \end{column}
     \begin{column}{\maxlogowidth}
-        \centering
+        \@ifundefined{@headerlogoright}{}{
+        \vskip5ex
+        \vfill
+        \raggedleft \@headerlogoright
+        \hspace*{1in}
+        \vfill
+        }
     \end{column}
     \end{columns}
     \vspace{5ex}
