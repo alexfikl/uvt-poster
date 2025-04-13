@@ -21,7 +21,7 @@ Templates in the same series:
 ## What it looks like
 
 [Full PDF](template.pdf)
-![template](images/template.png "template")
+![template](assets/template.png "template")
 
 ## How to use
 

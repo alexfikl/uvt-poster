@@ -17,7 +17,6 @@ build:
 
 [doc("Compile assets for example")]
 assets: build
-    @mkdir -p images
     magick \
         -verbose \
         -density 300 \
@@ -26,7 +25,7 @@ assets: build
         -flatten \
         -sharpen 0x1.0 \
         -geometry 2048x \
-        images/template.png
+        assets/template.png
 
 [doc("Update license text")]
 license:
