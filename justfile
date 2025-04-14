@@ -27,6 +27,14 @@ assets: build
         -geometry 2048x \
         assets/template.png
 
+[doc("Trim and square a given logo")]
+trim logo:
+    magick {{ logo }}.png -trim +repage \
+        -set option:side "%[fx:max(w,h)]" \
+        -gravity center -background none -extent "%[side]x%[side]" \
+        -resize 1024x1024 \
+        {{ logo }}.png
+
 [doc("Update license text")]
 license:
     python -m reuse download CC-BY-4.0 MIT
