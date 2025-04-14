@@ -48,8 +48,10 @@ The standard branding colors are given below.
 | `UVTLightBlue`                    | ![#3471B8](https://placehold.co/15x15/3471B8/3471B8.png) `(52, 113, 183)` |
 | `UVTDarkBlue`                     | ![#024A76](https://placehold.co/15x15/024A76/024A76.png) `(3, 75, 119)`   |
 | `UVTYellow`                       | ![#E3AB23](https://placehold.co/15x15/E3AB23/E3AB23.png) `(228, 172, 36)` |
+| `UVTTextYellow`                       | ![#A07718](https://placehold.co/15x15/A07718/A07718.png) `(160, 119, 24)` |
 
-The following helper macros are defined for some standard functionality.
+The `UVTTextYellow` color should be used in text, where a higher contrast might be
+required. The following helper macros are defined for some standard functionality.
 
 | Macro                             | Description                           |
 | :-                                | :-                                    |
