@@ -28,7 +28,9 @@ Templates in the same series:
 Copy `beamerthemeuvtposter.sty`, `beamercolorthemeuvtposter.sty`, `template.tex`,
 and the relevant logos from `assets/` to your working directory. Modify
 `template.tex` as appropriate and build with `PDFLaTeX` (or `XeLaTeX` or `LuaLaTeX`
-for the adventurous).
+for the adventurous). The poster is based on the [beamerposter](https://github.com/deselaers/latex-beamerposter)
+package and can be customized using standard Beamer macros (e.g. `\setbeamercolor`
+and `\setbeamertemplate`).
 
 The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 
