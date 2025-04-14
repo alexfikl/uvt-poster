@@ -27,8 +27,12 @@ assets: build
         -geometry 2048x \
         assets/template.png
 
-[doc("Trim and square a given logo")]
+[doc("Trim a given logo")]
 trim logo:
+    magick {{ logo }}.png -trim +repage {{ logo }}.png
+
+[doc("Trim and square a given logo")]
+square logo:
     magick {{ logo }}.png -trim +repage \
         -set option:side "%[fx:max(w,h)]" \
         -gravity center -background none -extent "%[side]x%[side]" \
