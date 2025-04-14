@@ -61,6 +61,20 @@ required. The following helper macros are defined for some standard functionalit
 | `\headerlogoleft`                 | Left-hand side logo in the header     |
 | `\headerlogoright`                | Right-hand side logo in the header    |
 
+## Logos
+
+The logos in the header are modified for better spacing and contrast. You can
+obtain similar results by doing (using `imagemagick`)
+```bash
+magick logo.png -trim +repage logo-trimmed.png
+magick logo-trimmed.png -fuzz 10% -channel RGB -fill '#FFFFFF' -opaque '#306BB3' logo.png
+```
+
+The first command removes any padding and the second command replaces the standard
+blue used in the logos with white. The standard logos provided by
+[UVT logos](https://dci.uvt.ro/identitate-vizuala/) also work without modification,
+so this is not required.
+
 ## Fonts
 
 Note that, by default this uses the [Myriad Pro](https://fonts.adobe.com/fonts/myriad)

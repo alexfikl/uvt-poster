@@ -27,6 +27,14 @@ assets: build
         -geometry 2048x \
         assets/template.png
 
+[doc("Swap the blue with white in a given logo")]
+white logo:
+    magick {{ logo }}.png \
+        -fuzz 10% \
+        -channel RGB \
+        -fill '#FFFFFF' -opaque '#306BB3' \
+        {{ logo }}-white.png
+
 [doc("Trim a given logo")]
 trim logo:
     magick {{ logo }}.png -trim +repage {{ logo }}.png
