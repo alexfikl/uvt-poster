@@ -18,12 +18,12 @@ Templates in the same series:
 * [UVT Beamer Presentation Template](https://github.com/alexfikl/uvt-beamer)
 * [UVT Conference Poster Template](https://github.com/alexfikl/uvt-poster)
 
-## What it looks like
+## What it Looks Like
 
 [Full PDF](template.pdf)
 ![template](assets/template.png "template")
 
-## How to use
+## How to Use It
 
 Copy `beamerthemeuvtposter.sty`, `beamercolorthemeuvtposter.sty`, `template.tex`,
 and the relevant logos from `assets/` to your working directory. Modify
