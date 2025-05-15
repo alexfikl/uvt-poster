@@ -60,7 +60,9 @@ required. The following helper macros are defined for some standard functionalit
 
 | Macro                             | Description                           |
 | :-                                | :-                                    |
-| `\footercontent`                  | Text added to the footer (should be properly spaced) |
+| `\footername`                     | Department name, presenter name, etc. (on the left) |
+| `\footerlocation`                 | Location of the poster presentation (in the middle) |
+| `\footeremail`                    | Contact email (on the right)          |
 | `\heading`                        | A macro that adds a small heading inside blocks |
 | `\separatorcolumn`                | Adds a standardized spacing between columns |
 | `\headerlogoleft`                 | Left-hand side logo in the header     |

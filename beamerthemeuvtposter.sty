@@ -80,7 +80,9 @@
 
 % <<< commands
 
-\ProvideDocumentCommand \footercontent { m } {\def\uvtposter@footercontent{#1}}
+\ProvideDocumentCommand \footername { m } {\def\uvtposter@footername{#1}}
+\ProvideDocumentCommand \footeremail { m } {\def\uvtposter@footeremail{#1}}
+\ProvideDocumentCommand \footerlocation { m } {\def\uvtposter@footerlocation{#1}}
 
 \ProvideDocumentCommand \heading { m } {%
     \par\bigskip%
@@ -236,7 +238,6 @@
 % footline
 
 \setbeamertemplate{footline}{
-    \@ifundefined{uvtposter@footercontent}{}{
     \begin{beamercolorbox}[vmode]{headline}
         \ifbeamercolorempty[bg]{headline rule}{}{
             \begin{beamercolorbox}[wd=\paperwidth,colsep=0.25ex]{headline rule}
@@ -245,11 +246,14 @@
         \centering
         \vspace{1.25ex}
         \hspace{0.025\paperwidth}
-        \uvtposter@footercontent
+        \@ifundefined{uvtposter@footername}{}{\uvtposter@footername}
+        \hfill
+        \@ifundefined{uvtposter@footerlocation}{}{\uvtposter@footerlocation}
+        \hfill
+        \@ifundefined{uvtposter@footeremail}{}{\uvtposter@footeremail}
         \hspace{0.025\paperwidth}
         \vspace{1.75ex}
     \end{beamercolorbox}
-  }
 }
 
 % >>>
