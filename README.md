@@ -36,6 +36,7 @@ The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 
 | Option                            | Description                           |
 | :-                                | :-                                    |
+| `language`                        | Can be `romanian` or `english`        |
 | `nomyriadpro`                     | Do not load the *Myriad Pro* fonts (default loads if available) |
 | `showframe`                       | Shows a frame around page elements (margins, etc.) |
 | `layoutgrid`                      | Adds a debug grid to check alignment  |
@@ -43,7 +44,9 @@ The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 | `orientation=name`                | Set the orientation to "landscape" or "portrait" |
 | Other                             | Other options are passed to `beamerposter` |
 
-The standard branding colors are given below.
+The `language` option is only used to automatically select a logo from the included
+assets that matches the chosen language. If you provide a logo yourself, this will
+have no effect. The standard branding colors are given below.
 
 | Color                             | RGB
 | :-                                | :-

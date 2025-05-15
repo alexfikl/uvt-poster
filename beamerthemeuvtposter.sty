@@ -96,11 +96,12 @@
 
 % <<< assets
 
+\headerlogoright{\includegraphics[width=0.08\paperwidth]{assets/uvt-logo-fmi.png}}
 \ifthenelse{\equal{\uvtposter@language}{english}}{
-    \headerlogoleft{\includegraphics[width=0.23\paperwidth]{assets/uvt-logo-en.png}}
+    \headerlogoleft{\includegraphics[width=0.08\paperwidth]{assets/uvt-logo-en-alt.png}}
 }{
 \ifthenelse{\equal{\uvtposter@language}{romanian}}{
-    \headerlogoleft{\includegraphics[width=0.23\paperwidth]{assets/uvt-logo-ro.png}}
+    \headerlogoleft{\includegraphics[width=0.08\paperwidth]{assets/uvt-logo-ro-alt.png}}
 }{
     \PackageError{beamerthemeuvtposter}{Unknown language `\uvtposter@language`}{}
 }}
@@ -117,7 +118,14 @@
 \fi
 
 \ifuvtposter@nomyriadpro
-    \usepackage{helvet}
+    \ifpdftex
+        \usepackage{helvet}
+    \else
+        \IfFontExistsTF{Nimbus Sans}{
+            \setmainfont[Ligatures=TeX]{Nimbus Sans}
+            \setsansfont[Ligatures=TeX]{Nimbus Sans}
+        }{\PackageWarning{beamerthemeuvtposter}{Nimbus Sans font is not available.}}
+    \fi
 \else
     \ifpdftex
         \IfFileExists{MyriadPro.sty}{
@@ -127,11 +135,15 @@
             \usepackage{helvet}}
     \else
         \IfFontExistsTF{Myriad Pro}{
-            \setmainfont{Myriad Pro}
-            \setsansfont{Myriad Pro}
+            \setmainfont[Ligatures=TeX]{Myriad Pro}
+            \setsansfont[Ligatures=TeX]{Myriad Pro}
         }{
             \PackageWarning{beamerthemeuvtposter}{Myriad Pro font is not available. Use the nomyriadpro option to silence this warning.}
-            \usepackage{helvet}}
+            \IfFontExistsTF{Nimbus Sans}{
+                \setmainfont[Ligatures=TeX]{Nimbus Sans}
+                \setsansfont[Ligatures=TeX]{Nimbus Sans}
+            }{\PackageWarning{beamerthemeuvtposter}{Nimbus Sans font is not available.}}
+        }
     \fi
 \fi
 \renewcommand{\familydefault}{\sfdefault}
