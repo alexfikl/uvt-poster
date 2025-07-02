@@ -80,9 +80,18 @@
 
 % <<< commands
 
-\ProvideDocumentCommand \footername { m } {\def\uvtposter@footername{#1}}
-\ProvideDocumentCommand \footeremail { m } {\def\uvtposter@footeremail{#1}}
-\ProvideDocumentCommand \footerlocation { m } {\def\uvtposter@footerlocation{#1}}
+% left
+\ProvideDocumentCommand \footerleft { m } {\def\uvtposter@footerleft{#1}}
+\ProvideDocumentCommand \footerweb { m } {\def\uvtposter@footerleft{\href{#1}{#1}}}
+
+% middle
+\ProvideDocumentCommand \footermiddle { m } {\def\uvtposter@footermiddle{#1}}
+\ProvideDocumentCommand \footerlocation { m } {\def\uvtposter@footermiddle{#1}}
+
+% right
+\ProvideDocumentCommand \footerright { m } {\def\uvtposter@footerright{#1}}
+\ProvideDocumentCommand \footername { m } {\def\uvtposter@footerright{#1}}
+\ProvideDocumentCommand \footeremail { m } {\def\uvtposter@footerright{\href{mailto:#1}{#1}}}
 
 \ProvideDocumentCommand \heading { m } {%
     \par\bigskip%
@@ -246,11 +255,11 @@
         \centering
         \vspace{1.25ex}
         \hspace{0.025\paperwidth}
-        \@ifundefined{uvtposter@footername}{}{\uvtposter@footername}
+        \@ifundefined{uvtposter@footerleft}{}{\uvtposter@footerleft}
         \hfill
-        \@ifundefined{uvtposter@footerlocation}{}{\uvtposter@footerlocation}
+        \@ifundefined{uvtposter@footermiddle}{}{\uvtposter@footermiddle}
         \hfill
-        \@ifundefined{uvtposter@footeremail}{}{\uvtposter@footeremail}
+        \@ifundefined{uvtposter@footerright}{}{\uvtposter@footerright}
         \hspace{0.025\paperwidth}
         \vspace{1.75ex}
     \end{beamercolorbox}
