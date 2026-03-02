@@ -3,7 +3,7 @@ TEXOUTDIR := "latex.out"
 TEXFLAGS := "-pdflua -output-directory=" + TEXOUTDIR
 
 _default:
-    @just --list
+    @just template
 
 [private]
 pdf basename:
@@ -12,11 +12,11 @@ pdf basename:
     @cp {{ TEXOUTDIR }}/{{ basename }}.pdf .
 
 [doc("Build template example")]
-build:
+template:
     @just pdf template
 
 [doc("Compile assets for example")]
-assets: build
+image: template
     magick \
         -verbose \
         -density 300 \
@@ -25,7 +25,7 @@ assets: build
         -flatten \
         -sharpen 0x1.0 \
         -geometry 2048x \
-        assets/template.png
+        images/template.png
 
 [doc("Swap the blue with white in a given logo")]
 white logo:
@@ -53,6 +53,10 @@ license:
     cp LICENSES/CC-BY-4.0.txt LICENSE
     cp LICENSES/MIT.txt LICENSE.MIT
     @rm -rf LICENSES
+
+[doc("Create a convenient zip file with the template files")]
+zip:
+    zip -r "$(basename $(pwd)).zip" assets *.sty template.tex
 
 [doc("Remove temporary compilation files")]
 clean:
