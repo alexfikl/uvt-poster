@@ -20,8 +20,7 @@ Templates in the same series:
 
 ## What it Looks Like
 
-[Full PDF](template.pdf)
-![template](assets/template.png "template")
+![template](template.png "UVT Poster Template")
 
 ## How to Use It
 
