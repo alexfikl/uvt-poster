@@ -15,8 +15,8 @@ pdf basename:
 template:
     @just pdf template
 
-[doc("Compile assets for example")]
-image: template
+[doc("Compile preview for template")]
+preview: template
     magick \
         -verbose \
         -density 300 \
@@ -25,7 +25,7 @@ image: template
         -flatten \
         -sharpen 0x1.0 \
         -geometry 2048x \
-        images/template.png
+        template.png
 
 [doc("Swap the blue with white in a given logo")]
 white logo:
@@ -56,7 +56,7 @@ license:
 
 [doc("Create a convenient zip file with the template files")]
 zip:
-    zip -r "$(basename $(pwd)).zip" assets *.sty template.tex
+    zip -9 -r "$(basename $(pwd)).zip" assets *.sty template.tex
 
 [doc("Remove temporary compilation files")]
 clean:
@@ -65,4 +65,4 @@ clean:
 
 [doc("Remove all generated files")]
 purge: clean
-    rm -rf *.pdf
+    rm -rf *.png *.pdf
