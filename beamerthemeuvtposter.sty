@@ -29,16 +29,15 @@
     prefix=uvtposter@
 }
 
-% enable Myriad Pro
-\DeclareBoolOption[false]{nomyriadpro}
+% enable Helvetica Now Display
+\DeclareBoolOption[false]{helveticanow}
 % select language for logos
 \DeclareStringOption[english]{language}
 % show a debug layout grid
 \DeclareBoolOption[false]{showframe}
 \DeclareBoolOption[false]{layoutgrid}
 
-\ProcessOptionsBeamer
-\DeclareDefaultOption{\PassOptionsToPackage{\CurrentOption}{beamerposter}}
+\DeclareDefaultOption{\PackageWarning{beamerthemeuvtposter}{Unknown option `\CurrentOption`}}
 \ProcessKeyvalOptions*
 
 % >>>
@@ -128,33 +127,22 @@
     \RequirePackage{fontspec}
 \fi
 
-\ifuvtposter@nomyriadpro
+\ifuvtposter@helveticanow
     \ifpdftex
-        \usepackage{helvet}
+        \PackageWarning{beamerthemeuvtposter}{HelveticaNowDisplay font is not available on pdfLaTeX. Remove the 'helveticanow' option to silence this warning or switch to LuaLaTeX / XeLaTex.}
+        \RequirePackage[scale=0.9]{tgheros}
     \else
-        \IfFontExistsTF{Nimbus Sans}{
-            \setmainfont[Ligatures=TeX]{Nimbus Sans}
-            \setsansfont[Ligatures=TeX]{Nimbus Sans}
-        }{\PackageWarning{beamerthemeuvtposter}{Nimbus Sans font is not available.}}
+        \IfFontExistsTF{HelveticaNowDisplay}{
+            \setsansfont[Ligatures=TeX]{HelveticaNowDisplay}
+        }{
+            \PackageWarning{beamerthemeuvtposter}{HelveticaNowDisplay font is not available on your system. Remove the 'helveticanow' option to silence this warning.}
+            \setsansfont[Scale=0.9]{TeX Gyre Heros}}
     \fi
 \else
     \ifpdftex
-        \IfFileExists{MyriadPro.sty}{
-            \usepackage[onlytext, smallfamily, lf]{MyriadPro}
-        }{
-            \PackageWarning{beamerthemeuvtposter}{Myriad Pro font is not available to pdfLaTeX. Use the nomyriadpro option to silence this warning.}
-            \usepackage{helvet}}
+        \RequirePackage[scale=0.9]{tgheros}
     \else
-        \IfFontExistsTF{Myriad Pro}{
-            \setmainfont[Ligatures=TeX]{Myriad Pro}
-            \setsansfont[Ligatures=TeX]{Myriad Pro}
-        }{
-            \PackageWarning{beamerthemeuvtposter}{Myriad Pro font is not available. Use the nomyriadpro option to silence this warning.}
-            \IfFontExistsTF{Nimbus Sans}{
-                \setmainfont[Ligatures=TeX]{Nimbus Sans}
-                \setsansfont[Ligatures=TeX]{Nimbus Sans}
-            }{\PackageWarning{beamerthemeuvtposter}{Nimbus Sans font is not available.}}
-        }
+        \setsansfont[Scale=0.9]{TeX Gyre Heros}
     \fi
 \fi
 \renewcommand{\familydefault}{\sfdefault}
