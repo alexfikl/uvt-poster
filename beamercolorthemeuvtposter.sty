@@ -10,17 +10,24 @@
 % <<< colors
 
 % NOTE: https://dci.uvt.ro/identitate-vizuala
-\definecolor{UVTLightBlue}{RGB}{52, 113, 183}
-\definecolor{UVTDarkBlue}{RGB}{3, 75, 119}
-\definecolor{UVTYellow}{RGB}{228, 172, 36}
+\definecolor{UVTDarkBlue}{RGB}{3, 58, 137}
+\definecolor{UVTSkyBlue}{RGB}{37, 136, 231}
+\definecolor{UVTLightBlue}{RGB}{174, 217, 248}
+
+\definecolor{UVTBlack}{RGB}{18, 18, 18}
+\definecolor{UVTAccentWhite}{RGB}{252, 245, 247}
+\definecolor{UVTWhite}{RGB}{255, 255, 255}
 
 % NOTE: taken from the document itself
-\definecolor{UVTBeamerBlue}{RGB}{195, 232, 251}
-\definecolor{UVTBeamerGray}{RGB}{246, 246, 246}
-\definecolor{UVTBeamerDarkGray}{RGB}{182, 182, 182}
+\definecolor{UVTPosterYellow}{RGB}{228, 172, 36}
+% FIXME: the PPTX templates don't seem to use the UVTDarkBlue color for some reason
+% \definecolor{UVTBeamerDarkBlue}{RGB}{3, 58, 137}
+\definecolor{UVTPosterDarkBlue}{RGB}{0, 37, 97}
+\definecolor{UVTPosterDarkGray}{RGB}{166, 166, 166}
+\definecolor{UVTPosterLightGray}{RGB}{191, 191, 191}
 
 % NOTE: a slightly darker yellow for use in the text
-\colorlet{UVTTextYellow}{UVTYellow!60!black}
+\colorlet{UVTTextYellow}{UVTPosterYellow!60!black}
 
 % >>>
 
@@ -36,7 +43,7 @@
 \setbeamercolor{frametitle}{fg=UVTDarkBlue, use=titlelike}
 
 \setbeamercolor{headline}{fg=white,bg=UVTDarkBlue}
-\setbeamercolor{headline rule}{bg=UVTYellow}
+\setbeamercolor{headline rule}{bg=UVTPosterYellow}
 
 \setbeamercolor{url text}{fg=UVTDarkBlue}
 
@@ -44,10 +51,10 @@
 \setbeamercolor{alerted text}{fg=UVTTextYellow}
 \setbeamercolor{example text}{fg=UVTLightBlue}
 
-\setbeamercolor{enumerate item}{fg=UVTYellow, parent=normal text}
-\setbeamercolor{description item}{fg=UVTYellow, parent=normal text}
+\setbeamercolor{enumerate item}{fg=UVTPosterYellow, parent=normal text}
+\setbeamercolor{description item}{fg=UVTPosterYellow, parent=normal text}
 
-\setbeamercolor{caption}{fg=UVTBeamerGray!50!black, parent=normal text}
+\setbeamercolor{caption}{fg=UVTPosterDarkGray, parent=normal text}
 
 % >>>
 
