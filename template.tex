@@ -4,7 +4,7 @@
 
 % `size` and `orientation` are options for `beamerposter`.
 % `scale` can be used to make the fonts bigger, as required.
-\usetheme[size=a1,orientation=landscape, scale=1.0]{uvtposter}
+\usetheme[size=a1, orientation=landscape, scale=1.0]{uvtposter}
 
 % load math packages
 \usepackage{amsmath}
@@ -48,8 +48,8 @@
 % <<< metadata
 
 \title{West University of Timișoara: \\ A simple and modern Conference Poster Template}
-\author{\underline{Hubert J. Farnsworth}\inst{1} \and Amy Wong-Kroker\inst{2}}
-\institute[shortinst]{\inst{1} Academy of Science, New New York \quad \inst{2} Mars University}
+\author{\underline{Hubert J. Farnsworth}\inst{1}, Amy Wong-Kroker\inst{2}, Morris Katz\inst{2}}
+\institute[shortinst]{\inst{1} Academy of Science, New New York, \\ \inst{2} Mars University}
 
 % add content to the footer
 \footerweb{https://info.uvt.ro/}
@@ -67,8 +67,7 @@
 % NOTE: this uses a three column format because it is in landscape mode. If you
 % are using a portrait mode, two columns is probably better to allow for larger text
 \begin{columns}[t]
-
-\separatorcolumn
+\begin{column}{0.015\paperwidth}\end{column}
 
 \begin{column}{0.3\paperwidth}
 
@@ -95,32 +94,29 @@
 
     \begin{center}
     \begin{lstlisting}[language=TeX]
-    \documentclass[final]{beamer}
-    % 1. The theme supports different sizes, e.g. a0, a1, ...
-    % 2. It can also be viewed in "landscape" or "portrait" mode
-    \usetheme[size=a1,orientation=landscape]{uvtposter}
+\documentclass[final]{beamer}
+% 1. The theme supports different sizes, e.g. a0, a1, ...
+% 2. It can also be viewed in "landscape" or "portrait" mode
+\usetheme[size=a1,orientation=landscape]{uvtposter}
 
-    % 3. You can select other color schemes or box types
-    \usecolortheme{uvtposter}
+% 3. You can select other color schemes or box types
+\usecolortheme{uvtposter}
     \end{lstlisting}
     \end{center}
-
-    \bigskip
-    More information is available in \texttt{template.tex}.
-    \bigskip
 \end{block}
 
 \begin{block}{Colors and Fonts}
-    This theme uses the \emph{Myriad Pro} font. This is a clean \emph{sans serif}
-    font from Adobe that is recommended by the official UVT branding.
+    This theme uses the \emph{TeX Gyre Heros} font. This is a clean \emph{sans serif}
+    open source font with a heavy Helvetica inspiration. The official UVT branding
+    recommends using the \emph{Helvetica Now Display} font, if available.
 
     \bigskip
     The theme has three standard colors:
     \begin{itemize}
         \item A nice \textcolor{UVTLightBlue}{\textbf{light blue}} (\texttt{UVTLightBlue}).
         \item A bolder \textcolor{UVTDarkBlue}{\textbf{dark blue}} (\texttt{UVTDarkBlue}).
-        \item An attention grabbing \textcolor{UVTYellow}{\textbf{yellow}}
-        (\texttt{UVTYellow})!
+        \item An attention grabbing \textcolor{UVTPosterYellow}{\textbf{yellow}}
+        (\texttt{UVTPosterYellow})!
         \item Variants \texttt{color!x} can also be used to darken or lighten them
     \end{itemize}
 
@@ -163,28 +159,26 @@
 \separatorcolumn
 
 \begin{column}{0.3\paperwidth}
-\begin{block}{Blocks}
-
-    We have various standard Beamer blocks styled in a pleasing fashion. You
-    might have noticed their use for each of the "sections" up to now.
-
-    \bigskip
-
-    \begin{block}{Block 1}
-        Some block block: \verb|\begin{block} ... \end{block}|.
-    \end{block}
-
-    \begin{alertblock}{Alert 1}
-        Some alert block: \verb|\begin{alertblock} ... \end{alertblock}|.
-    \end{alertblock}
-
-    \begin{exampleblock}{Example 1}
-        Some example block: \verb|\begin{exampleblock} ... \end{exampleblock}|.
-    \end{exampleblock}
+\begin{block}{Environments}
+    We have various standard environments styled in a pleasing fashion. For example,
+    you can give quotes using
 
     \bigskip
 
-    You probably should not nest these as we just did here!
+    \begin{quote}
+    ``When you do things right, people won't be sure you've done anything at all.''
+    \end{quote}
+
+    \bigskip
+
+    You can also define some basic theorems:
+
+    \bigskip
+
+    \begin{theorem}[Existence \& Uniqueness]
+    Our theorem exists and is unique.
+    \end{theorem}
+
 \end{block}
 
 \begin{block}{Figures}
@@ -207,7 +201,7 @@
         \draw[dashed] (yaxis |- c) node[left] {$y'$}
             -| (xaxis -| c) node[below] {$x'$};
         % Draw a dot to indicate intersection point
-        \fill[UVTYellow] (c) circle (2pt);
+        \fill[UVTPosterYellow] (c) circle (2pt);
     \end{tikzpicture}
     \caption{A simple figure.}
     \end{figure}
@@ -322,7 +316,8 @@
 \end{alertblock}
 
 \end{column}
-\separatorcolumn
+
+\begin{column}{0.015\paperwidth}\end{column}
 \end{columns}
 \end{frame}
 
