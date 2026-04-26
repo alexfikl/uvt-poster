@@ -119,7 +119,13 @@
     {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}%
     \par\smallskip}
 
-\ProvideDocumentCommand \separatorcolumn {} {\begin{column}{0.025\paperwidth}\end{column}}
+\ProvideDocumentCommand \separatorcolumn {} {%
+    \begin{column}{0.025\paperwidth}%
+        \begin{center}%
+            \textcolor{UVTPosterLightGray}{\rule{2pt}{0.75\paperheight}}%
+        \end{center}%
+    \end{column}%
+}
 
 \NewDocumentCommand \headerlogoleft  { m } {\def\@headerlogoleft{#1}}
 \NewDocumentCommand \headerlogoright  { m } {\def\@headerlogoright{#1}}
