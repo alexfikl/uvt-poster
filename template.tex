@@ -103,10 +103,6 @@
 \usecolortheme{uvtposter}
     \end{lstlisting}
     \end{center}
-
-    \bigskip
-    More information is available in \texttt{template.tex}.
-    \bigskip
 \end{block}
 
 \begin{block}{Colors and Fonts}
@@ -163,28 +159,26 @@
 \separatorcolumn
 
 \begin{column}{0.3\paperwidth}
-\begin{block}{Blocks}
-
-    We have various standard Beamer blocks styled in a pleasing fashion. You
-    might have noticed their use for each of the "sections" up to now.
-
-    \bigskip
-
-    \begin{block}{Block 1}
-        Some block block: \verb|\begin{block} ... \end{block}|.
-    \end{block}
-
-    \begin{alertblock}{Alert 1}
-        Some alert block: \verb|\begin{alertblock} ... \end{alertblock}|.
-    \end{alertblock}
-
-    \begin{exampleblock}{Example 1}
-        Some example block: \verb|\begin{exampleblock} ... \end{exampleblock}|.
-    \end{exampleblock}
+\begin{block}{Environments}
+    We have various standard environments styled in a pleasing fashion. For example,
+    you can give quotes using
 
     \bigskip
 
-    You probably should not nest these as we just did here!
+    \begin{quote}
+    ``When you do things right, people won't be sure you've done anything at all.''
+    \end{quote}
+
+    \bigskip
+
+    You can also define some basic theorems:
+
+    \bigskip
+
+    \begin{theorem}[Existence \& Uniqueness]
+    Our theorem exists and is unique.
+    \end{theorem}
+
 \end{block}
 
 \begin{block}{Figures}
