@@ -21,7 +21,7 @@
 % NOTE: taken from the document itself
 \definecolor{UVTPosterYellow}{RGB}{228, 172, 36}
 % FIXME: the PPTX templates don't seem to use the UVTDarkBlue color for some reason
-% \definecolor{UVTBeamerDarkBlue}{RGB}{3, 58, 137}
+% \definecolor{UVTPosterDarkBlue}{RGB}{3, 58, 137}
 \definecolor{UVTPosterDarkBlue}{RGB}{0, 37, 97}
 \definecolor{UVTPosterDarkGray}{RGB}{166, 166, 166}
 \definecolor{UVTPosterLightGray}{RGB}{191, 191, 191}
@@ -33,8 +33,8 @@
 
 % <<< styles
 
-\setbeamercolor{title}{fg=white, bg= , parent=normal text}
-\setbeamercolor{titlelike}{fg= , bg= , parent=normal text}
+\setbeamercolor{title}{fg=UVTPosterDarkBlue, bg=red, parent=normal text}
+\setbeamercolor{titlelike}{fg=, bg=, parent=normal text}
 \setbeamercolor{author}{use=normal text, bg= , parent=normal text}
 \setbeamercolor{date}{use=normal text, bg= , parent=normal text}
 \setbeamercolor{institute}{use=normal text, parent=normal text}
@@ -42,7 +42,7 @@
 \setbeamercolor{section title}{fg=white, use=title}
 \setbeamercolor{frametitle}{fg=UVTDarkBlue, use=titlelike}
 
-\setbeamercolor{headline}{fg=white,bg=UVTDarkBlue}
+\setbeamercolor{headline}{fg=white, bg=UVTPosterDarkBlue}
 \setbeamercolor{headline rule}{bg=UVTPosterYellow}
 
 \setbeamercolor{url text}{fg=UVTDarkBlue}
