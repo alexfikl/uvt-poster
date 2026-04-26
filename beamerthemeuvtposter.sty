@@ -183,6 +183,7 @@
 \setbeamerfont{block title}{size=\Large,series=\bfseries}
 \setbeamerfont{block title alerted}{size=\Large,series=\bfseries}
 \setbeamerfont{block title example}{size=\Large,series=\bfseries}
+\setbeamerfont{theorem title}{size=\normalsize,series=\bfseries}
 
 \setbeamerfont{page number in head/foot}{size=\tiny, series=\bfseries}
 \setbeamerfont{url text}{size=\scriptsize,series=\bfseries}
@@ -386,7 +387,35 @@
 
 % >>>
 
-\setbeamertemplate{bibliography item}[text]
+% <<< quote
+
+\renewenvironment{quote}{%
+    \begin{tabular}{!{\color{UVTPosterDarkGray}{\vrule width 4pt}}%
+                    >{\columncolor{UVTAccentWhite}}m{0.98\linewidth}}%
+        \vspace{0.5ex}\itshape
+}{%
+        \vspace{0.5ex}
+    \end{tabular}%
+}
+
+% >>>
+
+% <<< theorem
+
+\setbeamertemplate{theorem begin}{%
+    \begin{tabular}{!{\color{UVTPosterDarkBlue}{\vrule width 4pt}}%
+                    >{\columncolor{UVTLightBlue!10}}m{0.98\linewidth}}%
+        \vspace{0.5ex}%
+        {\usebeamerfont{theorem title}\inserttheoremname%
+        \ifx\inserttheoremaddition\empty\else\ (\inserttheoremaddition)\fi}%
+        \par\smallskip
+}
+\setbeamertemplate{theorem end}{%
+        \vspace{0.5ex}
+    \end{tabular}%
+}
+
+% >>>
 
 \setbeamersize{text margin left=2cm, text margin right=2cm}
 
