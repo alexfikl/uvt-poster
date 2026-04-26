@@ -182,6 +182,9 @@
     \end{beamercolorbox}
 
     \begin{tikzpicture}[remember picture, overlay]
+        \useasboundingbox (0, 0) rectangle (\paperwidth, \titlebarheight);
+        \usebeamercolor{title}
+
         % draw logo separator
         \draw[white, line width=2pt, opacity=0.5]
             ([xshift=1.5\headerheight, yshift=-0.8\headerheight]current page.north west)
@@ -228,23 +231,36 @@
     \end{tikzpicture}
 
     % title
-    \begin{beamercolorbox}[wd=\paperwidth,
-                           ht=\titlebarheight,
-                           dp=0pt,
-                           leftskip=0.025\paperwidth]{title}%
-    \vspace*{0.25\titlebarheight}%
-    \begin{minipage}[t]{0.52\paperwidth}
-        {\usebeamerfont{title} \MakeUppercase{\inserttitle}}%
-    \end{minipage}%
-    \hfill
-    {\color{white!40} \rule{3pt}{0.75\titlebarheight}} \hspace{2cm}%
-    \begin{minipage}[t]{0.25\paperwidth}
-        {\usebeamerfont{headline author}
-         \insertauthor\strut\par}%
-        {\usebeamerfont{headline institute}
-         \insertinstitute}
-    \end{minipage}
-    \end{beamercolorbox}
+    \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle (\paperwidth, \titlebarheight);
+        \usebeamercolor{title}
+
+        % background
+        \fill[bg] (0, 0) rectangle (\paperwidth, \titlebarheight);
+        \draw[fg, line width=5pt] (0, 0) -- (\paperwidth, 0);
+        \fill[fg] (0, 0) rectangle (15pt, \titlebarheight);
+        \fill[fg] (\paperwidth-15pt, 0) rectangle (\paperwidth, \titlebarheight);
+
+        % left side: title
+        \node[anchor=west, fg] at (0.025\paperwidth, 0.5\titlebarheight) {%
+            \begin{minipage}{0.5\paperwidth}
+                {\usebeamerfont{title} \MakeUppercase{\inserttitle}}%
+            \end{minipage}%
+        };
+        % separator
+        \node[anchor=center] at (0.65\paperwidth, 0.5\titlebarheight) {%
+            {\color{UVTPosterLightGray} \rule{3pt}{0.65\titlebarheight}}%
+        };
+
+        % right side: author + affiliation
+        \node[anchor=east, fg] at (0.965\paperwidth, 0.5\titlebarheight) {%
+            \begin{minipage}{0.35\paperwidth}
+                \raggedleft
+                {\usebeamerfont{headline author}\insertauthor\strut\par}%
+                {\usebeamerfont{headline institute}\insertinstitute}%
+            \end{minipage}%
+        };
+    \end{tikzpicture}
 }
 
 % footline
