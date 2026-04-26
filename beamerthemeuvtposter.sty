@@ -128,7 +128,7 @@
 
 % <<< assets
 
-\headerlogoleft{\includegraphics[height=0.1\paperheight]{assets/logo-uvt-white.png}}
+\headerlogoleft{\includegraphics[height=0.075\paperheight]{assets/logo-uvt-white.png}}
 
 % >>>
 
@@ -182,8 +182,12 @@
 \setbeamerfont{url text}{size=\scriptsize,series=\bfseries}
 \setbeamerfont{author in head/foot}{size=\scriptsize,series=\bfseries}
 
-\setbeamerfont{enumerate item}{size=\small, series=\bfseries}
-\setbeamerfont{description item}{size=\small, series=\bfseries}
+\setbeamerfont{itemize/enumerate body}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subbody}{size=\normalsize}
+\setbeamerfont{itemize/enumerate subsubbody}{size=\normalsize}
+
+\setbeamerfont{enumerate item}{size=\normalsize, series=\bfseries}
+\setbeamerfont{description item}{size=\normalsize, series=\bfseries}
 
 % >>>
 
@@ -191,7 +195,7 @@
 
 % headline
 \newlength{\headerheight}
-\setlength{\headerheight}{0.1\paperheight}
+\setlength{\headerheight}{0.075\paperheight}
 \newlength{\titlebarheight}
 \setlength{\titlebarheight}{0.1\paperheight}
 
@@ -216,7 +220,7 @@
         \node[
             anchor=north west,
             xshift=1.75\headerheight,
-            yshift=-0.3\headerheight
+            yshift=-0.25\headerheight
         ] at (current page.north west) {%
             \begin{minipage}{0.45\paperwidth}
                 {\usebeamercolor{title} \usebeamerfont{title}
@@ -239,7 +243,7 @@
         \node[
             anchor=north east,
             xshift=-0.5\headerheight,
-            yshift=-0.3\headerheight
+            yshift=-0.25\headerheight
         ] at (current page.north east) {%
             \begin{minipage}[t]{0.2\paperwidth}
                 \raggedleft
@@ -288,12 +292,9 @@
 
 \setbeamertemplate{footline}{
     \begin{beamercolorbox}[vmode]{headline}
-        \ifbeamercolorempty[bg]{headline rule}{}{
-            \begin{beamercolorbox}[wd=\paperwidth,colsep=0.25ex]{headline rule}
-            \end{beamercolorbox}}
         \usebeamerfont{footline}
         \centering
-        \vspace{1.25ex}
+        \vspace{2ex}
         \hspace{0.025\paperwidth}
         \@ifundefined{uvtposter@footerleft}{}{\uvtposter@footerleft}
         \hfill
@@ -312,79 +313,62 @@
 % <<< itemize
 
 \setbeamertemplate{itemize item}{
-    \tikz{
-        \draw[fill=UVTPosterYellow, draw=none] (0, 0) rectangle (0.1, 0.1);
-        \draw[fill=UVTPosterYellow, draw=none] (0.1, 0.1) rectangle (0.2, 0.2);
-        \draw[fill=UVTPosterYellow, draw=none] (0, 0.2) rectangle (0.1, 0.3);
+    \tikz[baseline=-0.65ex]{
+        % circle
+        \node[
+        circle,
+        minimum size=1ex,
+        inner sep=0pt,
+        draw=UVTDarkBlue
+        ] (c) {};
     }
 }
 
-\setbeamertemplate{itemize subitem}{
-    \tikz{
-        \draw[fill=UVTDarkBlue, draw=none] (0, 0) rectangle (0.075, 0.075);
-        \draw[fill=UVTDarkBlue, draw=none] (0.075, 0.075) rectangle (0.15, 0.15);
-        \draw[fill=UVTDarkBlue, draw=none] (0, 0.15) rectangle (0.075, 0.225);
-    }
-}
-
-\setbeamertemplate{itemize subsubitem}{
-    \tikz{
-        \draw[fill=white, draw=none] (0, 0) rectangle (0.075, 0.075);
-        \draw[fill=UVTLightBlue, draw=none] (0.075, 0.075) rectangle (0.15, 0.15);
-        \draw[fill=white, draw=none] (0, 0.15) rectangle (0.075, 0.225);
-    }
-}
+\setbeamertemplate{itemize subitem}{\color{UVTDarkBlue}\small $\bullet$}
+\setbeamertemplate{itemize subsubitem}{\color{UVTSkyBlue}\small $\bullet$}
 
 % >>>
 
 % <<< blocks
 
 \setbeamertemplate{block begin}{
-    \begin{adjustbox}{max width=0.98\textwidth}
-    \begin{tabular}{!{\color{UVTDarkBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-        \centering
-        \begin{minipage}{0.96\linewidth}
-        \begin{beamercolorbox}{block title}
-            \usebeamerfont*{block title}
-            \vbox{}\vskip 0.2ex
-            \insertblocktitle
-        \end{beamercolorbox}
-        \vspace{2em}
-        \usebeamerfont*{block text}
+    \begin{beamercolorbox}{block title}
+        \usebeamerfont*{block title}
+        \vbox{}\vskip 0.2ex
+        \MakeUppercase{\insertblocktitle}\par
+        \vskip 1ex
+        {\usebeamercolor{block title} \color{fg} \hrule height 3pt}
+        \vskip 1ex
+    \end{beamercolorbox}
+    \usebeamerfont*{block text}
 }
-\setbeamertemplate{block end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{3ex}}
+\setbeamertemplate{block end}{\vspace{0.75cm}}
 
 \setbeamertemplate{block alerted begin}{
-    \vspace{\fill}
-    \begin{adjustbox}{max width=0.98\textwidth}
-        \begin{tabular}{!{\color{UVTPosterYellow}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-        \centering
-        \begin{minipage}{0.96\linewidth}
-    	    \begin{beamercolorbox}{alerted text}
-                \usebeamerfont*{block title}
-                \vbox{}\vskip 0.2ex
-                \insertblocktitle
-            \end{beamercolorbox}
-            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
-            \usebeamerfont*{block text}
+    \begin{beamercolorbox}{block title alerted}
+        \usebeamerfont*{block title alerted}
+        \vbox{}\vskip 0.2ex
+        \MakeUppercase{\insertblocktitle}\par
+        \vskip 1ex
+        {\usebeamercolor{block title alerted}\color{fg}\hrule height 3pt}
+        \vskip 1ex
+    \end{beamercolorbox}
+    \usebeamerfont*{block text}
 }
-\setbeamertemplate{block alerted end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+\setbeamertemplate{block alerted end}{\vspace{0.75cm}}
 
 \setbeamertemplate{block example begin}{
-    \vspace{\fill}
-    \begin{adjustbox}{max width=0.98\textwidth}
-        \begin{tabular}{!{\color{UVTLightBlue}{\vrule width 10pt}}>{\columncolor[gray]{0.97}}m{\textwidth}}
-        \centering
-        \begin{minipage}{0.96\linewidth}
-    	    \begin{beamercolorbox}{example text}
-                \usebeamerfont*{block title}
-                \vbox{}\vskip 0.2ex
-                \insertblocktitle
-            \end{beamercolorbox}
-            \begin{beamercolorbox}[colsep=0.025ex]{block separator}\end{beamercolorbox}
-            \usebeamerfont*{block text}
+    \begin{beamercolorbox}{block title example}
+        \usebeamerfont*{block title example}
+        \vbox{}\vskip 0.2ex
+        \MakeUppercase{\insertblocktitle}\par
+        \vskip 1ex
+        {\usebeamercolor{block title example}\color{fg}\hrule height 3pt}
+        \vskip 1ex
+    \end{beamercolorbox}
+    \usebeamerfont*{block text}
 }
-\setbeamertemplate{block example end}{\end{minipage}\vspace{1em}\end{tabular}\end{adjustbox}\vspace*{2ex}}
+\setbeamertemplate{block example end}{\vspace{0.75cm}}
 
 % >>>
 
