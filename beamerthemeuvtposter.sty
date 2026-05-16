@@ -115,9 +115,7 @@
 \ProvideDocumentCommand \footeremail { m } {\def\uvtposter@footerright{\href{mailto:#1}{#1}}}
 
 \ProvideDocumentCommand \heading { m } {%
-    \par\bigskip%
-    {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}%
-    \par\smallskip}
+    {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}\strut\par}
 
 \ProvideDocumentCommand \separatorcolumn {} {%
     \begin{column}{0.025\paperwidth}%
@@ -200,36 +198,55 @@
 
 % >>>
 
+% <<< lengths
+
+\newlength{\uvtposter@headerheight}
+\setlength{\uvtposter@headerheight}{0.075\paperheight}
+\newlength{\uvtposter@headerlogooffset}
+\setlength{\uvtposter@headerlogooffset}{0.015\paperwidth}
+\newlength{\uvtposter@headerdothskip}
+\setlength{\uvtposter@headerdothskip}{0.015\paperwidth}
+\newlength{\uvtposter@headerdotvskip}
+\setlength{\uvtposter@headerdotvskip}{0.01\paperwidth}
+
+\newlength{\uvtposter@titlebarheight}
+\setlength{\uvtposter@titlebarheight}{0.1\paperheight}
+\newlength{\uvtposter@titlemarginwidth}
+\setlength{\uvtposter@titlemarginwidth}{0.006\paperwidth}
+
+\newlength{\uvtposter@separatorheight}
+\setlength{\uvtposter@separatorheight}{0.004\paperheight}
+
+\newlength{\uvtposter@blockpadding}
+\setlength{\uvtposter@blockpadding}{0.007\paperheight}
+
+% >>>
+
 % <<< outer: header / footer
 
 % headline
-\newlength{\headerheight}
-\setlength{\headerheight}{0.075\paperheight}
-\newlength{\titlebarheight}
-\setlength{\titlebarheight}{0.1\paperheight}
-
 \setbeamertemplate{headline}{
-    \begin{beamercolorbox}[wd=\paperwidth, ht=\headerheight, dp=0pt]{headline}
+    \begin{beamercolorbox}[wd=\paperwidth, ht=\uvtposter@headerheight, dp=0pt]{headline}
         \vfill
-        \hspace{1.5cm} \@headerlogoleft
+        \hspace{\uvtposter@headerlogooffset} \@headerlogoleft
         \vfill
     \end{beamercolorbox}
 
     \begin{tikzpicture}[remember picture, overlay]
-        \useasboundingbox (0, 0) rectangle (\paperwidth, \titlebarheight);
+        \useasboundingbox (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
         \usebeamercolor{title}
 
         % draw logo separator
         \draw[white, line width=2pt, opacity=0.5]
-            ([xshift=1.5\headerheight, yshift=-0.8\headerheight]current page.north west)
+            ([xshift=1.5\uvtposter@headerheight, yshift=-0.8\uvtposter@headerheight]current page.north west)
             --
-            ([xshift=1.5\headerheight, yshift=-0.2\headerheight]current page.north west);
+            ([xshift=1.5\uvtposter@headerheight, yshift=-0.2\uvtposter@headerheight]current page.north west);
 
         % university + department
         \node[
             anchor=north west,
-            xshift=1.75\headerheight,
-            yshift=-0.25\headerheight
+            xshift=1.75\uvtposter@headerheight,
+            yshift=-0.25\uvtposter@headerheight
         ] at (current page.north west) {%
             \begin{minipage}{0.45\paperwidth}
                 {\usebeamercolor{title} \usebeamerfont{title}
@@ -243,7 +260,8 @@
         \foreach \x in {-1,...,30}{%
             \foreach \y in {0,...,5}{%
                 \fill[white, opacity=0.1]
-                    ([xshift=-\x*1cm-2cm, yshift=-\y*1cm-0.4cm]current page.north east)
+                    ([xshift=-(\x-2)*\uvtposter@headerdothskip,
+                      yshift=-(\y-0.4)*\uvtposter@headerdotvskip]current page.north east)
                     circle (1ex);
             }%
         }%
@@ -251,8 +269,8 @@
         % presented at text
         \node[
             anchor=north east,
-            xshift=-0.5\headerheight,
-            yshift=-0.25\headerheight
+            xshift=-0.5\uvtposter@headerheight,
+            yshift=-0.25\uvtposter@headerheight
         ] at (current page.north east) {%
             \begin{minipage}[t]{0.2\paperwidth}
                 \raggedleft
@@ -266,28 +284,28 @@
 
     % title
     \begin{tikzpicture}
-        \useasboundingbox (0, 0) rectangle (\paperwidth, \titlebarheight);
+        \useasboundingbox (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
         \usebeamercolor{title}
 
         % background
-        \fill[bg] (0, 0) rectangle (\paperwidth, \titlebarheight);
-        \draw[fg, line width=5pt] (0, 0) -- (\paperwidth, 0);
-        \fill[fg] (0, 0) rectangle (15pt, \titlebarheight);
-        \fill[fg] (\paperwidth-15pt, 0) rectangle (\paperwidth, \titlebarheight);
+        \fill[bg] (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
+        \draw[fg, line width=\uvtposter@separatorheight] (0, 0) -- (\paperwidth, 0);
+        \fill[fg] (0, 0) rectangle (\uvtposter@titlemarginwidth, \uvtposter@titlebarheight);
+        \fill[fg] (\paperwidth-\uvtposter@titlemarginwidth, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
 
         % left side: title
-        \node[anchor=west, fg] at (0.025\paperwidth, 0.5\titlebarheight) {%
+        \node[anchor=west, fg] at (0.025\paperwidth, 0.5\uvtposter@titlebarheight) {%
             \begin{minipage}{0.5\paperwidth}
                 {\usebeamerfont{title} \MakeUppercase{\inserttitle}}%
             \end{minipage}%
         };
         % separator
-        \node[anchor=center] at (0.65\paperwidth, 0.5\titlebarheight) {%
-            {\color{UVTPosterLightGray} \rule{3pt}{0.65\titlebarheight}}%
+        \node[anchor=center] at (0.65\paperwidth, 0.5\uvtposter@titlebarheight) {%
+            {\color{UVTPosterLightGray} \rule{3pt}{0.65\uvtposter@titlebarheight}}%
         };
 
         % right side: author + affiliation
-        \node[anchor=east, fg] at (0.965\paperwidth, 0.5\titlebarheight) {%
+        \node[anchor=east, fg] at (0.965\paperwidth, 0.5\uvtposter@titlebarheight) {%
             \begin{minipage}{0.35\paperwidth}
                 \raggedleft
                 {\usebeamerfont{headline author}\insertauthor\strut\par}%
@@ -346,12 +364,12 @@
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title} \color{fg} \hrule height 3pt}
+        {\usebeamercolor{block title} \color{fg} \hrule height \uvtposter@separatorheight}
         \vskip 1ex
     \end{beamercolorbox}
     \usebeamerfont*{block text}
 }
-\setbeamertemplate{block end}{\vspace{0.75cm}}
+\setbeamertemplate{block end}{\vspace{\uvtposter@blockpadding}}
 
 \setbeamertemplate{block alerted begin}{
     \begin{beamercolorbox}{block title alerted}
@@ -359,12 +377,12 @@
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title alerted}\color{fg}\hrule height 3pt}
+        {\usebeamercolor{block title alerted}\color{fg}\hrule height \uvtposter@separatorheight}
         \vskip 1ex
     \end{beamercolorbox}
     \usebeamerfont*{block text}
 }
-\setbeamertemplate{block alerted end}{\vspace{0.75cm}}
+\setbeamertemplate{block alerted end}{\vspace{\uvtposter@blockpadding}}
 
 \setbeamertemplate{block example begin}{
     \begin{beamercolorbox}{block title example}
@@ -372,12 +390,12 @@
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title example}\color{fg}\hrule height 3pt}
+        {\usebeamercolor{block title example}\color{fg}\hrule height \uvtposter@separatorheight}
         \vskip 1ex
     \end{beamercolorbox}
     \usebeamerfont*{block text}
 }
-\setbeamertemplate{block example end}{\vspace{0.75cm}}
+\setbeamertemplate{block example end}{\vspace{\uvtposter@blockpadding}}
 
 % >>>
 
@@ -392,12 +410,14 @@
 % <<< quote
 
 \renewenvironment{quote}{%
+    \vspace{1ex}
     \begin{tabular}{!{\color{UVTPosterDarkGray}{\vrule width 4pt}}%
                     >{\columncolor{UVTAccentWhite}}m{0.98\linewidth}}%
-        \vspace{0.5ex}\itshape
+        \vspace{0.75ex}\itshape
 }{%
         \vspace{0.5ex}
     \end{tabular}%
+    \vspace{0ex}
 }
 
 % >>>
@@ -405,9 +425,10 @@
 % <<< theorem
 
 \setbeamertemplate{theorem begin}{%
+    \vspace{1ex}%
     \begin{tabular}{!{\color{UVTPosterDarkBlue}{\vrule width 4pt}}%
                     >{\columncolor{UVTLightBlue!10}}m{0.98\linewidth}}%
-        \vspace{0.5ex}%
+        \vspace{0.75ex}%
         {\usebeamerfont{theorem title}\inserttheoremname%
         \ifx\inserttheoremaddition\empty\else\ (\inserttheoremaddition)\fi}%
         \par\smallskip
@@ -415,6 +436,7 @@
 \setbeamertemplate{theorem end}{%
         \vspace{0.5ex}
     \end{tabular}%
+    \vspace{0ex}
 }
 
 % >>>
@@ -425,7 +447,7 @@
 
 % >>>
 
-\setbeamersize{text margin left=2cm, text margin right=2cm}
+\setbeamersize{description width=8ex}
 
 % >>>
 
