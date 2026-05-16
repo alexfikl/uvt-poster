@@ -76,6 +76,13 @@
 % set colors
 \usecolortheme{uvtposter}
 
+\newif\iflandscape
+\ifdimgreater{\paperwidth}{\paperheight}{%
+    \landscapetrue
+}{%
+    \landscapefalse
+}
+
 % >>>
 
 % <<< code listing
@@ -172,9 +179,15 @@
 \setbeamerfont{author}{size=\normalsize, series=\bfseries}
 \setbeamerfont{date}{size=\small, series=\mdseries}
 
+\iflandscape
 \setbeamerfont{headline title}{size=\Huge,series=\bfseries}
 \setbeamerfont{headline author}{size=\Large, series=\bfseries}
 \setbeamerfont{headline institute}{size=\normalsize}
+\else
+\setbeamerfont{headline title}{size=\Huge,series=\bfseries}
+\setbeamerfont{headline author}{size=\Large, series=\bfseries}
+\setbeamerfont{headline institute}{size=\Large}
+\fi
 \setbeamerfont{footline}{size=\Large,series=\bfseries}
 
 \setbeamerfont*{heading}{size=\normalsize, series=\bfseries}
@@ -202,15 +215,12 @@
 
 % <<< lengths
 
-\newif\iflandscape
 \newlength{\uvtposter@unitlength}
-\ifdimgreater{\paperwidth}{\paperheight}{%
-    \landscapetrue
+\iflandscape
     \setlength{\uvtposter@unitlength}{\paperwidth}
-}{%
-    \landscapefalse
+\else
     \setlength{\uvtposter@unitlength}{\paperheight}
-}
+\fi
 
 \newlength{\uvtposter@headerheight}
 \setlength{\uvtposter@headerheight}{0.0525\uvtposter@unitlength}
@@ -222,7 +232,11 @@
 \setlength{\uvtposter@headerdotvskip}{0.01\uvtposter@unitlength}
 
 \newlength{\uvtposter@titlebarheight}
+\iflandscape
 \setlength{\uvtposter@titlebarheight}{0.075\uvtposter@unitlength}
+\else
+\setlength{\uvtposter@titlebarheight}{0.085\uvtposter@unitlength}
+\fi
 \newlength{\uvtposter@titlemarginwidth}
 \setlength{\uvtposter@titlemarginwidth}{0.007\uvtposter@unitlength}
 
@@ -295,6 +309,7 @@
     \end{tikzpicture}
 
     % title
+    \iflandscape
     \begin{tikzpicture}
         \useasboundingbox (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
         \usebeamercolor{title}
@@ -308,7 +323,7 @@
         % left side: title
         \node[anchor=west, fg] at (0.025\paperwidth, 0.5\uvtposter@titlebarheight) {%
             \begin{minipage}{0.5\paperwidth}
-                {\usebeamerfont{title} \MakeUppercase{\inserttitle}}%
+                {\usebeamerfont{headline title} \MakeUppercase{\inserttitle}}%
             \end{minipage}%
         };
         % separator
@@ -325,6 +340,28 @@
             \end{minipage}%
         };
     \end{tikzpicture}
+    \else
+    \begin{tikzpicture}
+        \useasboundingbox (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
+        \usebeamercolor{title}
+
+        % background
+        \fill[bg] (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
+        \draw[fg, line width=\uvtposter@separatorwidth] (0, 0) -- (\paperwidth, 0);
+        \fill[fg] (0, 0) rectangle (\uvtposter@titlemarginwidth, \uvtposter@titlebarheight);
+        \fill[fg] (\paperwidth-\uvtposter@titlemarginwidth, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
+
+        % title
+        \node[anchor=west, fg] at (0.025\paperwidth, 0.5\uvtposter@titlebarheight) {%
+            \begin{minipage}{\paperwidth}
+                {\usebeamerfont{headline title} \MakeUppercase{\inserttitle}\strut\par}%
+                \vspace*{5ex}
+                {\usebeamerfont{headline author}\insertauthor\enspace·\enspace}%
+                {\usebeamerfont{headline institute}\insertinstitute}%
+            \end{minipage}%
+        };
+    \end{tikzpicture}
+    \fi
 }
 
 % footline
