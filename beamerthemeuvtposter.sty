@@ -121,6 +121,11 @@
 \ProvideDocumentCommand \footername { m } {\def\uvtposter@footerright{#1}}
 \ProvideDocumentCommand \footeremail { m } {\def\uvtposter@footerright{\href{mailto:#1}{#1}}}
 
+\ProvideDocumentCommand \headerlogo  { m } {\def\uvtposter@headerlogo{#1}}
+\ProvideDocumentCommand \headeruniversity { m } {\def\uvtposter@headeruniversity{#1}}
+\ProvideDocumentCommand \headerdepartment { m } {\def\uvtposter@headerdepartment{#1}}
+\ProvideDocumentCommand \headerconference { m } {\def\uvtposter@headerconference{#1}}
+
 \ProvideDocumentCommand \heading { m } {%
     {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}\strut\par}
 
@@ -134,14 +139,24 @@
     \end{column}%
 }
 
-\NewDocumentCommand \headerlogoleft  { m } {\def\@headerlogoleft{#1}}
-\NewDocumentCommand \headerlogoright  { m } {\def\@headerlogoright{#1}}
-
 % >>>
 
 % <<< assets
 
-\headerlogoleft{assets/logo-uvt-white.png}
+\ifthenelse{\equal{\uvtposter@language}{english}}{
+    \headeruniversity{West University of Timișoara}
+    \headerdepartment{Falculty Name \enspace·\enspace Department Name}
+    \headerconference{Conference Name (2026)}
+}{
+\ifthenelse{\equal{\uvtposter@language}{romanian}}{
+    \headeruniversity{Universitatea de Vest din Timișoara}
+    \headerdepartment{Facultate \enspace·\enspace Departament}
+    \headerconference{Numele Conferinței (2026)}
+}{
+    \PackageError{beamerthemeuvtposter}{Unknown language `\uvtposter@language`}{}
+}}
+
+\headerlogo{assets/logo-uvt-white.png}
 
 % >>>
 
@@ -235,7 +250,7 @@
 \iflandscape
 \setlength{\uvtposter@titlebarheight}{0.075\uvtposter@unitlength}
 \else
-\setlength{\uvtposter@titlebarheight}{0.085\uvtposter@unitlength}
+\setlength{\uvtposter@titlebarheight}{0.095\uvtposter@unitlength}
 \fi
 \newlength{\uvtposter@titlemarginwidth}
 \setlength{\uvtposter@titlemarginwidth}{0.007\uvtposter@unitlength}
@@ -254,7 +269,7 @@
 \setbeamertemplate{headline}{
     \begin{beamercolorbox}[wd=\paperwidth, ht=\uvtposter@headerheight, dp=0pt]{headline}
         \vfill
-        \hspace{\uvtposter@headerlogooffset} \includegraphics[height=\uvtposter@headerheight]{\@headerlogoleft}
+        \hspace{\uvtposter@headerlogooffset} \includegraphics[height=\uvtposter@headerheight]{\uvtposter@headerlogo}
         \vfill
     \end{beamercolorbox}
 
@@ -276,9 +291,9 @@
         ] at (current page.north west) {%
             \begin{minipage}{0.45\paperwidth}
                 {\usebeamercolor{title} \usebeamerfont{title}
-                \MakeUppercase{Universitatea de Vest din Timișoara}\strut\par}
+                \MakeUppercase{\uvtposter@headeruniversity}\strut\par}
                 {\usebeamercolor{title} \usebeamerfont{subtitle}
-                \MakeUppercase{Faculty Name\enspace·\enspace Department Name}\strut\par}
+                \MakeUppercase{\uvtposter@headerdepartment}\strut\par}
             \end{minipage}%
         };
 
@@ -298,12 +313,12 @@
             xshift=-0.5\uvtposter@headerheight,
             yshift=-0.5\uvtposter@headerheight
         ] at (current page.north east) {%
-            \begin{minipage}[t]{0.2\paperwidth}
+            \begin{minipage}[t]{0.45\paperwidth}
                 \raggedleft
                 {\usebeamercolor{title} \usebeamerfont{subtitle}
-                \MakeUppercase{Presented at}\strut\par}
+                 \MakeUppercase{Presented at}\strut\par}
                 {\usebeamercolor{title} \usebeamerfont{title}
-                Conference Name 2026\strut\par}
+                 \uvtposter@headerconference\strut\par}
             \end{minipage}%
         };
     \end{tikzpicture}
