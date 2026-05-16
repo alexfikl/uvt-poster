@@ -196,6 +196,8 @@
 \setbeamerfont{enumerate item}{size=\normalsize, series=\bfseries}
 \setbeamerfont{description item}{size=\normalsize, series=\bfseries}
 
+\setbeamerfont{bibliography item}{series=\bfseries}
+
 % >>>
 
 % <<< outer: header / footer
@@ -414,6 +416,12 @@
         \vspace{0.5ex}
     \end{tabular}%
 }
+
+% >>>
+
+% <<< bibliography
+
+\setbeamertemplate{bibliography item}{\insertbiblabel}
 
 % >>>
 
