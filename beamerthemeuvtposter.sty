@@ -120,7 +120,9 @@
 \ProvideDocumentCommand \separatorcolumn {} {%
     \begin{column}{0.025\paperwidth}%
         \begin{center}%
-            \textcolor{UVTPosterLightGray}{\rule{2pt}{0.75\paperheight}}%
+            \textcolor{UVTPosterLightGray}{
+                \rule{\uvtposter@separatorwidth}
+                     {\dimexpr\paperheight-\uvtposter@headerheight-\uvtposter@titlebarheight-0.06\uvtposter@unitlength}}%
         \end{center}%
     \end{column}%
 }
@@ -132,7 +134,7 @@
 
 % <<< assets
 
-\headerlogoleft{\includegraphics[height=0.075\paperheight]{assets/logo-uvt-white.png}}
+\headerlogoleft{assets/logo-uvt-white.png}
 
 % >>>
 
@@ -200,25 +202,35 @@
 
 % <<< lengths
 
+\newif\iflandscape
+\newlength{\uvtposter@unitlength}
+\ifdimgreater{\paperwidth}{\paperheight}{%
+    \landscapetrue
+    \setlength{\uvtposter@unitlength}{\paperwidth}
+}{%
+    \landscapefalse
+    \setlength{\uvtposter@unitlength}{\paperheight}
+}
+
 \newlength{\uvtposter@headerheight}
-\setlength{\uvtposter@headerheight}{0.075\paperheight}
+\setlength{\uvtposter@headerheight}{0.0525\uvtposter@unitlength}
 \newlength{\uvtposter@headerlogooffset}
-\setlength{\uvtposter@headerlogooffset}{0.015\paperwidth}
+\setlength{\uvtposter@headerlogooffset}{0.013\uvtposter@unitlength}
 \newlength{\uvtposter@headerdothskip}
-\setlength{\uvtposter@headerdothskip}{0.015\paperwidth}
+\setlength{\uvtposter@headerdothskip}{0.015\uvtposter@unitlength}
 \newlength{\uvtposter@headerdotvskip}
-\setlength{\uvtposter@headerdotvskip}{0.01\paperwidth}
+\setlength{\uvtposter@headerdotvskip}{0.01\uvtposter@unitlength}
 
 \newlength{\uvtposter@titlebarheight}
-\setlength{\uvtposter@titlebarheight}{0.1\paperheight}
+\setlength{\uvtposter@titlebarheight}{0.075\uvtposter@unitlength}
 \newlength{\uvtposter@titlemarginwidth}
-\setlength{\uvtposter@titlemarginwidth}{0.006\paperwidth}
+\setlength{\uvtposter@titlemarginwidth}{0.007\uvtposter@unitlength}
 
-\newlength{\uvtposter@separatorheight}
-\setlength{\uvtposter@separatorheight}{0.004\paperheight}
+\newlength{\uvtposter@separatorwidth}
+\setlength{\uvtposter@separatorwidth}{0.003\uvtposter@unitlength}
 
 \newlength{\uvtposter@blockpadding}
-\setlength{\uvtposter@blockpadding}{0.007\paperheight}
+\setlength{\uvtposter@blockpadding}{0.007\uvtposter@unitlength}
 
 % >>>
 
@@ -228,7 +240,7 @@
 \setbeamertemplate{headline}{
     \begin{beamercolorbox}[wd=\paperwidth, ht=\uvtposter@headerheight, dp=0pt]{headline}
         \vfill
-        \hspace{\uvtposter@headerlogooffset} \@headerlogoleft
+        \hspace{\uvtposter@headerlogooffset} \includegraphics[height=\uvtposter@headerheight]{\@headerlogoleft}
         \vfill
     \end{beamercolorbox}
 
@@ -237,16 +249,16 @@
         \usebeamercolor{title}
 
         % draw logo separator
-        \draw[white, line width=2pt, opacity=0.5]
+        \draw[white, line width=\uvtposter@separatorwidth, opacity=0.5]
             ([xshift=1.5\uvtposter@headerheight, yshift=-0.8\uvtposter@headerheight]current page.north west)
             --
             ([xshift=1.5\uvtposter@headerheight, yshift=-0.2\uvtposter@headerheight]current page.north west);
 
         % university + department
         \node[
-            anchor=north west,
+            anchor=west,
             xshift=1.75\uvtposter@headerheight,
-            yshift=-0.25\uvtposter@headerheight
+            yshift=-0.5\uvtposter@headerheight
         ] at (current page.north west) {%
             \begin{minipage}{0.45\paperwidth}
                 {\usebeamercolor{title} \usebeamerfont{title}
@@ -268,9 +280,9 @@
 
         % presented at text
         \node[
-            anchor=north east,
+            anchor=east,
             xshift=-0.5\uvtposter@headerheight,
-            yshift=-0.25\uvtposter@headerheight
+            yshift=-0.5\uvtposter@headerheight
         ] at (current page.north east) {%
             \begin{minipage}[t]{0.2\paperwidth}
                 \raggedleft
@@ -289,7 +301,7 @@
 
         % background
         \fill[bg] (0, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
-        \draw[fg, line width=\uvtposter@separatorheight] (0, 0) -- (\paperwidth, 0);
+        \draw[fg, line width=\uvtposter@separatorwidth] (0, 0) -- (\paperwidth, 0);
         \fill[fg] (0, 0) rectangle (\uvtposter@titlemarginwidth, \uvtposter@titlebarheight);
         \fill[fg] (\paperwidth-\uvtposter@titlemarginwidth, 0) rectangle (\paperwidth, \uvtposter@titlebarheight);
 
@@ -301,7 +313,7 @@
         };
         % separator
         \node[anchor=center] at (0.65\paperwidth, 0.5\uvtposter@titlebarheight) {%
-            {\color{UVTPosterLightGray} \rule{3pt}{0.65\uvtposter@titlebarheight}}%
+            {\color{UVTPosterLightGray} \rule{\uvtposter@separatorwidth}{0.65\uvtposter@titlebarheight}}%
         };
 
         % right side: author + affiliation
@@ -364,7 +376,7 @@
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title} \color{fg} \hrule height \uvtposter@separatorheight}
+        {\usebeamercolor{block title} \color{fg} \hrule height \uvtposter@separatorwidth}
         \vskip 1ex
     \end{beamercolorbox}
     \usebeamerfont*{block text}
@@ -377,7 +389,7 @@
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title alerted}\color{fg}\hrule height \uvtposter@separatorheight}
+        {\usebeamercolor{block title alerted}\color{fg}\hrule height \uvtposter@separatorwidth}
         \vskip 1ex
     \end{beamercolorbox}
     \usebeamerfont*{block text}
@@ -390,7 +402,7 @@
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title example}\color{fg}\hrule height \uvtposter@separatorheight}
+        {\usebeamercolor{block title example}\color{fg}\hrule height \uvtposter@separatorwidth}
         \vskip 1ex
     \end{beamercolorbox}
     \usebeamerfont*{block text}
