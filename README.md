@@ -28,8 +28,8 @@ Copy `beamerthemeuvtposter.sty`, `beamercolorthemeuvtposter.sty`, `template.tex`
 and the relevant logos from `assets/` to your working directory. Modify
 `template.tex` as appropriate and build with `PDFLaTeX` (or `XeLaTeX` or `LuaLaTeX`
 for the adventurous). The poster is based on the [beamerposter](https://github.com/deselaers/latex-beamerposter)
-package and can be customized using standard Beamer macros (e.g. `\setbeamercolor`
-and `\setbeamertemplate`).
+package and can be customized using standard Beamer macros (e.g. `\setbeamercolor`,
+`\setbeamerfont`, and `\setbeamertemplate`).
 
 The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 
@@ -39,6 +39,7 @@ The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 | `helveticanow`                    | Attempt to load the the *Helvetica Now Display* fonts |
 | `size=aN`                         | Set the paper size                    |
 | `orientation=name`                | Set the orientation to "landscape" or "portrait" |
+| `scale=1.0`                       | Scale the font sizes of the whole poster |
 | `showframe`                       | [DEBUG] Shows a frame around page elements (margins, etc.) |
 | `layoutgrid`                      | [DEBUG] Adds a debug grid to check alignment  |
 
@@ -60,6 +61,7 @@ The standard branding colors are given below.
 | `UVTPosterYellow`                 | ![#E3AB23](https://placehold.co/15x15/E3AB23/E3AB23.png) `(228, 172, 36)` |
 | `UVTPosterDarkBlue`               | ![#002561](https://placehold.co/15x15/002561/002561.png) `(0, 37, 97)` |
 | `UVTPosterDarkGray`               | ![#A6A6A6](https://placehold.co/15x15/A6A6A6/A6A6A6.png) `(166, 166, 166)` |
+| `UVTPosterLightGray`              | ![#BFBFBF](https://placehold.co/15x15/BFBFBF/BFBFBF.png) `(191, 191, 191)` |
 
 The following helper macros are defined for some standard functionality.
 
