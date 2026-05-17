@@ -422,43 +422,25 @@
 
 % <<< blocks
 
-\setbeamertemplate{block begin}{
-    \begin{beamercolorbox}{block title}
-        \usebeamerfont*{block title}
+\NewDocumentCommand \uvtposter@block {m} {
+    \begin{beamercolorbox}{#1 title}
+        \usebeamerfont*{#1 title}
         \vbox{}\vskip 0.2ex
         \MakeUppercase{\insertblocktitle}\par
         \vskip 1ex
-        {\usebeamercolor{block title} \color{fg} \hrule height \uvtposter@separatorwidth}
+        {\usebeamercolor{#1 title} \color{fg} \hrule height \uvtposter@separatorwidth}
         \vskip 1ex
     \end{beamercolorbox}
-    \usebeamerfont*{block text}
+    \usebeamerfont*{#1 text}
 }
+
+\setbeamertemplate{block begin}{\uvtposter@block{block}}
 \setbeamertemplate{block end}{\vspace{\uvtposter@blockpadding}}
 
-\setbeamertemplate{block alerted begin}{
-    \begin{beamercolorbox}{block title alerted}
-        \usebeamerfont*{block title alerted}
-        \vbox{}\vskip 0.2ex
-        \MakeUppercase{\insertblocktitle}\par
-        \vskip 1ex
-        {\usebeamercolor{block title alerted}\color{fg}\hrule height \uvtposter@separatorwidth}
-        \vskip 1ex
-    \end{beamercolorbox}
-    \usebeamerfont*{block text}
-}
+\setbeamertemplate{block alerted begin}{\uvtposter@block{block alerted}}
 \setbeamertemplate{block alerted end}{\vspace{\uvtposter@blockpadding}}
 
-\setbeamertemplate{block example begin}{
-    \begin{beamercolorbox}{block title example}
-        \usebeamerfont*{block title example}
-        \vbox{}\vskip 0.2ex
-        \MakeUppercase{\insertblocktitle}\par
-        \vskip 1ex
-        {\usebeamercolor{block title example}\color{fg}\hrule height \uvtposter@separatorwidth}
-        \vskip 1ex
-    \end{beamercolorbox}
-    \usebeamerfont*{block text}
-}
+\setbeamertemplate{block example begin}{\uvtposter@block{block example}}
 \setbeamertemplate{block example end}{\vspace{\uvtposter@blockpadding}}
 
 % >>>
