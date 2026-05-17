@@ -19,12 +19,11 @@ template:
 preview: template
     magick \
         -verbose \
-        -density 300 \
         template.pdf \
         -quality 100 \
         -flatten \
         -sharpen 0x1.0 \
-        -geometry 2048x \
+        -geometry 1024x \
         template.png
 
 [doc("Swap the blue with white in a given logo")]
