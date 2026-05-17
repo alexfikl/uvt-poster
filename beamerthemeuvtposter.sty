@@ -22,7 +22,6 @@
 
 % <<< options
 
-\RequirePackage{ifthen}
 \RequirePackage{kvoptions}
 \SetupKeyvalOptions{
     family=uvtposter,
@@ -46,6 +45,7 @@
 % <<< packages
 
 \RequirePackage{ifpdf}
+\RequirePackage{hyperref}
 
 % fancy graphics
 \RequirePackage{beamerposter}
@@ -109,27 +109,27 @@
 % <<< commands
 
 % left
-\ProvideDocumentCommand \footerleft { m } {\def\uvtposter@footerleft{#1}}
-\ProvideDocumentCommand \footerweb { m } {\def\uvtposter@footerleft{\href{#1}{#1}}}
+\NewDocumentCommand \footerleft { m } {\def\uvtposter@footerleft{#1}}
+\NewDocumentCommand \footerweb { m } {\def\uvtposter@footerleft{\href{#1}{#1}}}
 
 % middle
-\ProvideDocumentCommand \footermiddle { m } {\def\uvtposter@footermiddle{#1}}
-\ProvideDocumentCommand \footerlocation { m } {\def\uvtposter@footermiddle{#1}}
+\NewDocumentCommand \footermiddle { m } {\def\uvtposter@footermiddle{#1}}
+\NewDocumentCommand \footerlocation { m } {\def\uvtposter@footermiddle{#1}}
 
 % right
-\ProvideDocumentCommand \footerright { m } {\def\uvtposter@footerright{#1}}
-\ProvideDocumentCommand \footername { m } {\def\uvtposter@footerright{#1}}
-\ProvideDocumentCommand \footeremail { m } {\def\uvtposter@footerright{\href{mailto:#1}{#1}}}
+\NewDocumentCommand \footerright { m } {\def\uvtposter@footerright{#1}}
+\NewDocumentCommand \footername { m } {\def\uvtposter@footerright{#1}}
+\NewDocumentCommand \footeremail { m } {\def\uvtposter@footerright{\href{mailto:#1}{#1}}}
 
-\ProvideDocumentCommand \headerlogo  { m } {\def\uvtposter@headerlogo{#1}}
-\ProvideDocumentCommand \headeruniversity { m } {\def\uvtposter@headeruniversity{#1}}
-\ProvideDocumentCommand \headerdepartment { m } {\def\uvtposter@headerdepartment{#1}}
-\ProvideDocumentCommand \headerconference { m } {\def\uvtposter@headerconference{#1}}
+\NewDocumentCommand \headerlogo  { m } {\def\uvtposter@headerlogo{#1}}
+\NewDocumentCommand \headeruniversity { m } {\def\uvtposter@headeruniversity{#1}}
+\NewDocumentCommand \headerdepartment { m } {\def\uvtposter@headerdepartment{#1}}
+\NewDocumentCommand \headerconference { m } {\def\uvtposter@headerconference{#1}}
 
-\ProvideDocumentCommand \heading { m } {%
+\NewDocumentCommand \heading { m } {%
     {\usebeamerfont{heading}\usebeamercolor[fg]{heading}#1}\strut\par}
 
-\ProvideDocumentCommand \separatorcolumn {} {%
+\NewDocumentCommand \separatorcolumn {} {%
     \begin{column}{0.025\paperwidth}%
         \begin{center}%
             \textcolor{UVTPosterLightGray}{
@@ -143,18 +143,21 @@
 
 % <<< assets
 
-\ifthenelse{\equal{\uvtposter@language}{english}}{
+\def\uvtposter@lang@english{english}
+\def\uvtposter@lang@romanian{romanian}
+
+\ifx\uvtposter@language\uvtposter@lang@english
     \headeruniversity{West University of Timișoara}
     \headerdepartment{Falculty Name \enspace·\enspace Department Name}
     \headerconference{Conference Name (2026)}
-}{
-\ifthenelse{\equal{\uvtposter@language}{romanian}}{
+\else \ifx\uvtposter@language\uvtposter@lang@romanian
     \headeruniversity{Universitatea de Vest din Timișoara}
     \headerdepartment{Facultate \enspace·\enspace Departament}
     \headerconference{Numele Conferinței (2026)}
-}{
+\else
     \PackageError{beamerthemeuvtposter}{Unknown language `\uvtposter@language`}{}
-}}
+\fi
+\fi
 
 \headerlogo{assets/logo-uvt-white.png}
 
@@ -292,7 +295,7 @@
         };
 
         % dotted pattern on the right
-        \foreach \x in {-1,...,30}{%
+        \foreach \x in {-1,...,25}{%
             \foreach \y in {0,...,5}{%
                 \fill[white, opacity=0.1]
                     ([xshift=-(\x-2)*\uvtposter@headerdothskip,
@@ -376,7 +379,7 @@
 % footline
 
 \setbeamertemplate{footline}{
-    \begin{beamercolorbox}[vmode]{headline}
+    \begin{beamercolorbox}[vmode]{footline}
         \usebeamerfont{footline}
         \centering
         \vspace{2ex}
