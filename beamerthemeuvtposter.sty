@@ -221,6 +221,9 @@
 \setbeamerfont{enumerate item}{size=\normalsize, series=\bfseries}
 \setbeamerfont{description item}{size=\normalsize, series=\bfseries}
 
+\setbeamerfont{caption}{size=\scriptsize}
+\setbeamerfont{quote body}{series=\itshape}
+
 \setbeamerfont{bibliography item}{series=\bfseries}
 
 % >>>
@@ -275,7 +278,7 @@
         \usebeamercolor{title}
 
         % draw logo separator
-        \draw[white, line width=\uvtposter@separatorwidth, opacity=0.5]
+        \draw[UVTWhite, line width=\uvtposter@separatorwidth, opacity=0.5]
             ([xshift=1.5\uvtposter@headerheight, yshift=-0.8\uvtposter@headerheight]current page.north west)
             --
             ([xshift=1.5\uvtposter@headerheight, yshift=-0.2\uvtposter@headerheight]current page.north west);
@@ -297,7 +300,7 @@
         % dotted pattern on the right
         \foreach \x in {-1,...,25}{%
             \foreach \y in {0,...,5}{%
-                \fill[white, opacity=0.1]
+                \fill[UVTWhite, opacity=0.1]
                     ([xshift=-(\x-2)*\uvtposter@headerdothskip,
                       yshift=-(\y-0.4)*\uvtposter@headerdotvskip]current page.north east)
                     circle (1ex);
@@ -445,7 +448,7 @@
 % <<< figures
 
 % disable "Figure:" in the captions
-\setbeamertemplate{caption}{\scriptsize\insertcaption}
+\setbeamertemplate{caption}{\usebeamerfont{caption}\insertcaption}
 \setbeamertemplate{caption label separator}{}
 
 % >>>
@@ -456,7 +459,7 @@
     \vspace{1ex}
     \begin{tabular}{!{\color{UVTPosterDarkGray}{\vrule width 4pt}}%
                     >{\columncolor{UVTAccentWhite}}m{0.98\linewidth}}%
-        \vspace{0.75ex}\itshape
+        \vspace{0.75ex}\usebeamerfont{quote body}
 }{%
         \vspace{0.5ex}
     \end{tabular}%
