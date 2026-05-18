@@ -150,10 +150,12 @@
     \headeruniversity{West University of Timișoara}
     \headerdepartment{Falculty Name \enspace·\enspace Department Name}
     \headerconference{Conference Name (2026)}
+    \def\uvtposter@headerpresentedat{Presented at}
 \else \ifx\uvtposter@language\uvtposter@lang@romanian
     \headeruniversity{Universitatea de Vest din Timișoara}
     \headerdepartment{Facultate \enspace·\enspace Departament}
     \headerconference{Numele Conferinței (2026)}
+    \def\uvtposter@headerpresentedat{Prezentat la}
 \else
     \PackageError{beamerthemeuvtposter}{Unknown language `\uvtposter@language`}{}
 \fi
@@ -308,6 +310,7 @@
         }%
 
         % presented at text
+        \ifx\uvtposter@headerconference\empty\else
         \node[
             anchor=east,
             xshift=-0.5\uvtposter@headerheight,
@@ -316,11 +319,12 @@
             \begin{minipage}[t]{0.45\paperwidth}
                 \raggedleft
                 {\usebeamercolor{title} \usebeamerfont{subtitle}
-                 \MakeUppercase{Presented at}\strut\par}
+                 \MakeUppercase{\uvtposter@headerpresentedat}\strut\par}
                 {\usebeamercolor{title} \usebeamerfont{title}
                  \uvtposter@headerconference\strut\par}
             \end{minipage}%
         };
+        \fi
     \end{tikzpicture}
 
     % title
