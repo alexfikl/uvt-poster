@@ -113,7 +113,7 @@ font is not found.
 If you are using `XeLaTeX` or `LuaLaTeX`, there are many other nice fonts to
 keep in mind that would work well. For example: Carlito (a Calibri clone),
 Caladea (a Cambria clone), Montserrat (inspired by Gotham), Adobe Source Sans,
-and many others. A nice font will always make your slides look nicer!
+and many others. A nice font will always make your poster look nicer!
 
 ## Acknowledgement
 
