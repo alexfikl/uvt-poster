@@ -61,7 +61,7 @@ The standard branding colors are given below.
 | `UVTPosterYellow`                 | ![#E3AB23](https://placehold.co/15x15/E3AB23/E3AB23.png) `(228, 172, 36)` |
 | `UVTPosterDarkBlue`               | ![#002561](https://placehold.co/15x15/002561/002561.png) `(0, 37, 97)` |
 | `UVTPosterDarkGray`               | ![#A6A6A6](https://placehold.co/15x15/A6A6A6/A6A6A6.png) `(166, 166, 166)` |
-| `UVTPosterLightGray`              | ![#BFBFBF](https://placehold.co/15x15/BFBFBF/BFBFBF.png) `(191, 191, 191)` |
+| `UVTPosterLightGray`              | ![#DDDDDD](https://placehold.co/15x15/DDDDDD/DDDDDD.png) `(221, 221, 221)` |
 
 The following helper macros are defined for some standard functionality.
 
