@@ -14,9 +14,10 @@ However, the university does not offer an example of a conference poster, so thi
 just inspired by the existing templates (for letterheads and presentation slides).
 
 Templates in the same series:
-* [UVT Letterhead Template](https://github.com/alexfikl/uvt-letterhead)
-* [UVT Beamer Presentation Template](https://github.com/alexfikl/uvt-beamer)
-* [UVT Conference Poster Template](https://github.com/alexfikl/uvt-poster)
+
+- [UVT Letterhead Template](https://github.com/alexfikl/uvt-letterhead)
+- [UVT Beamer Presentation Template](https://github.com/alexfikl/uvt-beamer)
+- [UVT Conference Poster Template](https://github.com/alexfikl/uvt-poster)
 
 ## What it Looks Like
 
@@ -33,15 +34,15 @@ package and can be customized using standard Beamer macros (e.g. `\setbeamercolo
 
 The package defines the following options used as `\usetheme[opts]{uvtposter}`.
 
-| Option                            | Description                           |
-| :-                                | :-                                    |
-| `language`                        | Can be `romanian` or `english`        |
-| `helveticanow`                    | Attempt to load the the *Helvetica Now Display* fonts |
-| `size=aN`                         | Set the paper size                    |
-| `orientation=name`                | Set the orientation to "landscape" or "portrait" |
-| `scale=1.0`                       | Scale the font sizes of the whole poster |
-| `showframe`                       | [DEBUG] Shows a frame around page elements (margins, etc.) |
-| `layoutgrid`                      | [DEBUG] Adds a debug grid to check alignment  |
+| Option             | Description                                                |
+| :----------------- | :--------------------------------------------------------- |
+| `language`         | Can be `romanian` or `english`                             |
+| `helveticanow`     | Attempt to load the the *Helvetica Now Display* fonts      |
+| `size=aN`          | Set the paper size                                         |
+| `orientation=name` | Set the orientation to "landscape" or "portrait"           |
+| `scale=1.0`        | Scale the font sizes of the whole poster                   |
+| `showframe`        | [DEBUG] Shows a frame around page elements (margins, etc.) |
+| `layoutgrid`       | [DEBUG] Adds a debug grid to check alignment               |
 
 Additional options are passed directly to `beamerposter`, so you should consult
 its documentation. The `language` option is only used to automatically set some
@@ -50,41 +51,42 @@ them yourself, this will have no effect.
 
 The standard branding colors are given below.
 
-| Color                             | RGB
-| :-                                | :-
-| `UVTDarkBlue`                     | ![#033A89](https://placehold.co/15x15/033A89/033A89.png) `(3, 58, 137)` |
-| `UVTSkyBlue`                      | ![#2588E7](https://placehold.co/15x15/2588E7/2588E7.png) `(37, 136, 231)` |
-| `UVTLightBlue`                    | ![#AED9F8](https://placehold.co/15x15/AED9F8/AED9F8.png) `(174, 217, 248)` |
-| `UVTBlack`                        | ![#121212](https://placehold.co/15x15/121212/121212.png) `(18, 18, 18)` |
-| `UVTAccentWhite`                  | ![#FCF5F7](https://placehold.co/15x15/FCF5F7/FCF5F7.png) `(252, 245, 247)` |
-| `UVTWhite`                        | ![#FFFFFF](https://placehold.co/15x15/FFFFFF/FFFFFF.png) `(255, 255, 255)` |
-| `UVTPosterYellow`                 | ![#E3AB23](https://placehold.co/15x15/E3AB23/E3AB23.png) `(228, 172, 36)` |
-| `UVTPosterDarkBlue`               | ![#002561](https://placehold.co/15x15/002561/002561.png) `(0, 37, 97)` |
-| `UVTPosterDarkGray`               | ![#A6A6A6](https://placehold.co/15x15/A6A6A6/A6A6A6.png) `(166, 166, 166)` |
-| `UVTPosterLightGray`              | ![#DDDDDD](https://placehold.co/15x15/DDDDDD/DDDDDD.png) `(221, 221, 221)` |
+| Color                | RGB                                                                        |
+| :------------------- | :------------------------------------------------------------------------- |
+| `UVTDarkBlue`        | ![#033A89](https://placehold.co/15x15/033A89/033A89.png) `(3, 58, 137)`    |
+| `UVTSkyBlue`         | ![#2588E7](https://placehold.co/15x15/2588E7/2588E7.png) `(37, 136, 231)`  |
+| `UVTLightBlue`       | ![#AED9F8](https://placehold.co/15x15/AED9F8/AED9F8.png) `(174, 217, 248)` |
+| `UVTBlack`           | ![#121212](https://placehold.co/15x15/121212/121212.png) `(18, 18, 18)`    |
+| `UVTAccentWhite`     | ![#FCF5F7](https://placehold.co/15x15/FCF5F7/FCF5F7.png) `(252, 245, 247)` |
+| `UVTWhite`           | ![#FFFFFF](https://placehold.co/15x15/FFFFFF/FFFFFF.png) `(255, 255, 255)` |
+| `UVTPosterYellow`    | ![#E3AB23](https://placehold.co/15x15/E3AB23/E3AB23.png) `(228, 172, 36)`  |
+| `UVTPosterDarkBlue`  | ![#002561](https://placehold.co/15x15/002561/002561.png) `(0, 37, 97)`     |
+| `UVTPosterDarkGray`  | ![#A6A6A6](https://placehold.co/15x15/A6A6A6/A6A6A6.png) `(166, 166, 166)` |
+| `UVTPosterLightGray` | ![#DDDDDD](https://placehold.co/15x15/DDDDDD/DDDDDD.png) `(221, 221, 221)` |
 
 The following helper macros are defined for some standard functionality.
 
-| Macro                             | Description                           |
-| :-                                | :-                                    |
-| `\footerleft`                     | Generic text to add on the left of the footer |
-| `\footermiddle`                   | Generic text to add on the middle of the footer |
-| `\footerright`                    | Generic text to add on the right of the footer |
-| `\footerweb`                      | Personal or institutional website (on the left) |
-| `\footerlocation`                 | Location of the poster presentation (in the middle) |
-| `\footeremail`                    | Contact email (on the right)          |
-| `\footername`                     | Presenter or institution name (on the right) |
-| `\headerlogo`                     | Logo shown in the top left of the header |
-| `\headeruniversity`               | Name of the university shown in the header (top left)|
-| `\headerdepartment`               | Name of the faculty/department shown in the header (top left)|
-| `\headerconference`               | Name of the conference shown in the header (top right)|
-| `\heading`                        | A macro that adds a small heading inside blocks |
-| `\separatorcolumn`                | Adds a standardized spacing between columns |
+| Macro               | Description                                                   |
+| :------------------ | :------------------------------------------------------------ |
+| `\footerleft`       | Generic text to add on the left of the footer                 |
+| `\footermiddle`     | Generic text to add on the middle of the footer               |
+| `\footerright`      | Generic text to add on the right of the footer                |
+| `\footerweb`        | Personal or institutional website (on the left)               |
+| `\footerlocation`   | Location of the poster presentation (in the middle)           |
+| `\footeremail`      | Contact email (on the right)                                  |
+| `\footername`       | Presenter or institution name (on the right)                  |
+| `\headerlogo`       | Logo shown in the top left of the header                      |
+| `\headeruniversity` | Name of the university shown in the header (top left)         |
+| `\headerdepartment` | Name of the faculty/department shown in the header (top left) |
+| `\headerconference` | Name of the conference shown in the header (top right)        |
+| `\heading`          | A macro that adds a small heading inside blocks               |
+| `\separatorcolumn`  | Adds a standardized spacing between columns                   |
 
 ## Logos
 
 The logo in the header is taken from the official university branding website.
 It was trimmed and resized to better fit the header using
+
 ```bash
 just trim logo.png
 just square logo.png
