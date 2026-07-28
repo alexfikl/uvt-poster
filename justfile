@@ -89,7 +89,7 @@ typos:
 
 [doc("Lint using badness")]
 badness:
-    badness lint template.tex beamercolorthemeuvtposter.sty beamerthemeuvtposter.sty
+    badness lint template.tex beamercolorthemeuvtposter.sty
     @echo -e "\e[1;32mbadness clean!\e[0m"
 
 # }}}
