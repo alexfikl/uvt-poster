@@ -3,12 +3,12 @@
 [![GitHub Actions Workflow Status](https://github.com/alexfikl/uvt-poster/actions/workflows/ci.yml/badge.svg)](https://github.com/alexfikl/uvt-poster/actions/workflows/ci.yml)
 [![Open in Overleaf](https://img.shields.io/static/v1?label=LaTeX&message=Open-in-Overleaf&color=47a141&style=flat&logo=overleaf)](https://www.overleaf.com/docs?snip_uri=https://github.com/alexfikl/uvt-poster/archive/refs/heads/main.zip)
 
-> [!NOTE]
-> This template style is fairly complete and working well, but any feature requests
-> or bug reports to improve it are **very welcome**! The theme should adjust to
-> various aspect ratios and page sizes.
+> [!WARNING]
+> If you are using this for your dissertation, make sure to use the version
+> from the [official website](https://info.uvt.ro/finalizarea-studiilor-universitare-master/).
+> This is a development version and may have changes that are not yet official.
 
-This is an unofficial conference poster template for UVT (West University of Timișoara).
+This is a semi-official conference poster template for UVT (West University of Timișoara).
 It is loosely based on the official UVT [branding](https://dci.uvt.ro/identitate-vizuala).
 However, the university does not offer an example of a conference poster, so this is
 just inspired by the existing templates (for letterheads and presentation slides).
