@@ -61,7 +61,9 @@ format: yamlfmt mdformat justfmt
 
 [doc("Format tex files with badness")]
 texfmt:
-    badness format template.tex uvt-letterhead.sty
+    badness format \
+        --wrap stable --math-wrap preserve --indent-width 4 \
+        template.tex beamercolorthemeuvtposter.sty beamerthemeuvtposter.sty
     @echo -e "\e[1;32mbadness clean!\e[0m"
 
 [doc("Format YAML files with yamlfmt")]
@@ -89,7 +91,7 @@ typos:
 
 [doc("Lint using badness")]
 badness:
-    badness lint template.tex beamercolorthemeuvtposter.sty
+    badness lint template.tex beamercolorthemeuvtposter.sty beamerthemeuvtposter.sty
     @echo -e "\e[1;32mbadness clean!\e[0m"
 
 # }}}
